@@ -1,11 +1,36 @@
 package br.com.imd.cadeduc.ensino.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "etapa_ensino", schema = "ensino")
 public class EtapaEnsino {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_etapa_ensino")
 	private Long id;
+
+	@Column(name = "nome")
 	private String nome;
-	private Serie serie;
+
+	@Column(name = "vagas_disponiveis")
 	private int vagasDisponiveis;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Serie> series;
+
+	@Transient
 	private TipoEtapaEnsinoEnum tipoEtapaEnsino;
 
 	public Long getId() {
@@ -24,14 +49,6 @@ public class EtapaEnsino {
 		this.nome = nome;
 	}
 
-	public Serie getSerie() {
-		return serie;
-	}
-
-	public void setSerie(Serie serie) {
-		this.serie = serie;
-	}
-
 	public int getVagasDisponiveis() {
 		return vagasDisponiveis;
 	}
@@ -46,6 +63,14 @@ public class EtapaEnsino {
 
 	public void setTipoEtapaEnsino(TipoEtapaEnsinoEnum tipoEtapaEnsino) {
 		this.tipoEtapaEnsino = tipoEtapaEnsino;
+	}
+
+	public List<Serie> getSeries() {
+		return series;
+	}
+
+	public void setSeries(List<Serie> series) {
+		this.series = series;
 	}
 
 }

@@ -53,7 +53,7 @@
 		<!-- Ferramentas para restart da aplicação -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
+			<artifactId>spring-boot-devtools</artifactId>			
 		</dependency>
 
 
