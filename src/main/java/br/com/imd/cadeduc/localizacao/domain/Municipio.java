@@ -1,6 +1,4 @@
-package br.com.imd.cadeduc.domain.comum;
-
-import br.com.imd.cadeduc.domain.localizacao.EstadosEnum;
+package br.com.imd.cadeduc.localizacao.domain;
 
 public class Municipio {
 
