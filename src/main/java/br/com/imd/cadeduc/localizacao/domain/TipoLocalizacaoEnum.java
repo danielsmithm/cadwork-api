@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.domain.localizacao;
+package br.com.imd.cadeduc.localizacao.domain;
 
 public enum TipoLocalizacaoEnum {
 	

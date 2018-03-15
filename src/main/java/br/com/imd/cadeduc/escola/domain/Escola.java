@@ -1,6 +1,6 @@
-package br.com.imd.cadeduc.domain.escola;
+package br.com.imd.cadeduc.escola.domain;
 
-import br.com.imd.cadeduc.domain.localizacao.Endereco;
+import br.com.imd.cadeduc.localizacao.domain.Endereco;
 
 public class Escola {
 

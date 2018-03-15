@@ -1,6 +1,4 @@
-package br.com.imd.cadeduc.domain.localizacao;
-
-import br.com.imd.cadeduc.domain.comum.Municipio;
+package br.com.imd.cadeduc.localizacao.domain;
 
 public class Endereco {
 
