@@ -1,7 +1,21 @@
 package br.com.imd.cadeduc.localizacao.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "endereco", schema = "localizacao")
 public class Endereco {
 
+	@Id	
+	@Column(name = "id_endereco")
 	private Long id;
 
 	private String logradouro;
@@ -11,6 +25,12 @@ public class Endereco {
 	private String cep;
 	private double latitude;
 	private double longitude;
+	
+	@Column(name = "tipo_localizacao")
+	@Enumerated(EnumType.ORDINAL)
+	private TipoLocalizacaoEnum tipoLocalizacao;
+
+	@OneToOne	
 	private Municipio municipio;
 
 	public Long getId() {
@@ -83,6 +103,14 @@ public class Endereco {
 
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
+	}
+
+	public TipoLocalizacaoEnum getTipoLocalizacao() {
+		return tipoLocalizacao;
+	}
+
+	public void setTipoLocalizacao(TipoLocalizacaoEnum tipoLocalizacao) {
+		this.tipoLocalizacao = tipoLocalizacao;
 	}
 
 }

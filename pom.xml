@@ -47,13 +47,12 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- Ferramentas para restart da aplicação -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>			
+			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
 

@@ -1,9 +1,26 @@
 package br.com.imd.cadeduc.localizacao.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "municipio", schema = "localizacao")
 public class Municipio {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id_municipio")
 	private Long id;
 	private String nome;
+
+	@Column(name = "tipo_vigencia")
+	@Enumerated(EnumType.ORDINAL)
 	private EstadosEnum estado;
 
 	public Long getId() {

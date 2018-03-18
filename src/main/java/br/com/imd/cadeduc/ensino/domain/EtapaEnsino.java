@@ -5,12 +5,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "etapa_ensino", schema = "ensino")
@@ -20,17 +21,17 @@ public class EtapaEnsino {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_etapa_ensino")
 	private Long id;
-
-	@Column(name = "nome")
+	
 	private String nome;
 
 	@Column(name = "vagas_disponiveis")
 	private int vagasDisponiveis;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)	
 	private List<Serie> series;
 
-	@Transient
+	@Column(name = "tipo_etapa_ensino")
+	@Enumerated(EnumType.ORDINAL)
 	private TipoEtapaEnsinoEnum tipoEtapaEnsino;
 
 	public Long getId() {

@@ -7,9 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import br.com.imd.cadeduc.ensino.domain.Serie;
 import br.com.imd.cadeduc.localizacao.domain.Endereco;
@@ -24,14 +25,14 @@ public class Escola {
 	private Long id;
 	private String nome;
 
-	/*@OneToOne
-	@Column(name = "id_endereco")*/
-	@Transient
+	@OneToOne
+	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 
 	@ManyToMany
+	@JoinColumn(name = "id_serie")
 	private List<Serie> series;
-
+	
 	public Long getId() {
 		return id;
 	}
