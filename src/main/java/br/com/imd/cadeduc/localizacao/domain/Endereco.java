@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,6 +17,7 @@ public class Endereco {
 
 	@Id	
 	@Column(name = "id_endereco")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String logradouro;
@@ -30,7 +32,8 @@ public class Endereco {
 	@Enumerated(EnumType.ORDINAL)
 	private TipoLocalizacaoEnum tipoLocalizacao;
 
-	@OneToOne	
+	@OneToOne
+	@JoinColumn(name = "id_municipio")
 	private Municipio municipio;
 
 	public Long getId() {
