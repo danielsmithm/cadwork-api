@@ -20,12 +20,12 @@ import javax.persistence.Table;
 public class Municipio {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_municipio")
 	private Long id;
 	private String nome;
 
-	@Column(name = "tipo_vigencia")
+	@Column(name = "id_estado")
 	@Enumerated(EnumType.ORDINAL)
 	private EstadosEnum estado;
 

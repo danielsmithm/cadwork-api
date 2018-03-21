@@ -2,6 +2,7 @@ package br.com.imd.cadeduc.escola.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Escola {
 	private Long id;
 	private String nome;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 
