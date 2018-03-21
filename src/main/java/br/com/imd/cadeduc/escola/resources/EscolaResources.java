@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +29,10 @@ public class EscolaResources {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void salvar(@RequestBody Escola escola) {
+	public ResponseEntity salvar(@RequestBody Escola escola) {
 		escolaDao.save(escola);
+		
+		return new ResponseEntity("Escola cadastrada com sucesso!", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
