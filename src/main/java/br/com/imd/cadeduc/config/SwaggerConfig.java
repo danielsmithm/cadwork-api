@@ -2,9 +2,7 @@ package br.com.imd.cadeduc.config;
 
 import java.util.ArrayList;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import springfox.documentation.builders.PathSelectors;
@@ -32,7 +30,7 @@ public class SwaggerConfig {
     
 	private ApiInfo metaData() {
         ApiInfo apiInfo = new ApiInfo(
-                "Spring Boot REST API",
+                "CADEduc",
                 "Spring Boot REST API para Geocalização de escolas",
                 "1.0",
                 "Termos e Serviço",

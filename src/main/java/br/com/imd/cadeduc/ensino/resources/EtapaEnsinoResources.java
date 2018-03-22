@@ -14,7 +14,7 @@ import br.com.imd.cadeduc.ensino.dao.EtapaEnsinoDAO;
 import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
 
 @RestController
-@RequestMapping(value = "/etapasEnsino")
+@RequestMapping(value = "/etapasEnsino", produces = "application/json")
 public class EtapaEnsinoResources {
 
 	@Autowired
