@@ -4,17 +4,23 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+
 import br.com.imd.cadeduc.localizacao.dao.MunicipioDAO;
 import br.com.imd.cadeduc.localizacao.domain.Municipio;
+import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping(value = "/municipios")
+@Api(tags = "Municípios", value = "onlinestore", description = "Operações pertinentes a municípios")
 public class MunicipioResources {
 	@Autowired
 	MunicipioDAO municipioDao;
@@ -26,8 +32,10 @@ public class MunicipioResources {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void salvar(@RequestBody Municipio municipio) {
+	public ResponseEntity<String> salvar(@RequestBody Municipio municipio) {
 		municipioDao.save(municipio);
+		return new ResponseEntity<String>(
+				new Gson().toJson("Município cadastrado com sucesso!"), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

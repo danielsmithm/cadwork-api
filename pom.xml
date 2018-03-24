@@ -37,6 +37,15 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- UTILS -->
+			<!-- GSON -->
+	
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+			</dependency>
+			
+
 		<!-- Modelagem JPA -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -55,6 +64,19 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
+
+		<!-- Swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.7.0</version>
+		</dependency>
 
 	</dependencies>
 

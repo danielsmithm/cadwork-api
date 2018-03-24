@@ -1,14 +1,17 @@
 package br.com.imd.cadeduc.localizacao.domain;
 
+import io.swagger.annotations.ApiModel;
+
 /**
  * 
  * Enumeração dos possíveis tipos de localização
  * 
  * @author Miguel
- * @version 0.1
+ * @version 0.2
  *
  */
 
+@ApiModel
 public enum TipoLocalizacaoEnum {
 	
 	/**

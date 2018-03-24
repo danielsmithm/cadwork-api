@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.imd.cadeduc.ensino.dao.SerieDAO;
 import br.com.imd.cadeduc.ensino.domain.Serie;
+import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping(value = "/series")
+@Api(tags = "Séries", value = "onlinestore", description = "Operações pertinentes a séries")
 public class SerieResources {
 
 	@Autowired
