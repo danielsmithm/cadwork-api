@@ -9,28 +9,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * Classe que define o modelo Municipio
+ * 
  * @author Miguel
- * @version 0.1
+ * @version 0.2
  */
 
 @Entity
 @Table(name = "municipio", schema = "localizacao")
+@ApiModel
 public class Municipio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_municipio")
+	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
+
+	@ApiModelProperty(notes = "Nome de um município", required = true)
 	private String nome;
 
-	@Column(name = "id_estado")
-	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "estado")
+	@Enumerated(EnumType.STRING)
+	@ApiModelProperty(notes = "Estado ao qual o municipio pertence", required = true)
 	private EstadosEnum estado;
 
 	/**
 	 * Método para retorno do id de uma instância de Municipio
+	 * 
 	 * @return Long - Valor do id
 	 */
 	public Long getId() {
@@ -39,16 +49,18 @@ public class Municipio {
 
 	/**
 	 * Altera o valor do id de uma instância de Municipio
-	 * @param id Long - Novo valor do id
+	 * 
+	 * @param id
+	 *            Long - Novo valor do id
 	 */
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	
 	/**
 	 * Retorna o nome do município
+	 * 
 	 * @return String - nome do município
 	 */
 	public String getNome() {
@@ -57,7 +69,9 @@ public class Municipio {
 
 	/**
 	 * Altera o nome do município
-	 * @param nome String - novo nome do município
+	 * 
+	 * @param nome
+	 *            String - novo nome do município
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -65,6 +79,7 @@ public class Municipio {
 
 	/**
 	 * Retorna o estado ao qual o município pertence
+	 * 
 	 * @return EstadosEnum - estado ao qual o município pertence
 	 */
 	public EstadosEnum getEstado() {
@@ -73,9 +88,11 @@ public class Municipio {
 
 	/**
 	 * Altera o estado ao qual o município pertence
-	 * @param estado EstadosEnum - novo estado ao qual o município pertence
+	 * 
+	 * @param estado
+	 *            EstadosEnum - novo estado ao qual o município pertence
 	 */
-	
+
 	public void setEstado(EstadosEnum estado) {
 		this.estado = estado;
 	}

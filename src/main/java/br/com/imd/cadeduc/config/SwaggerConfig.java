@@ -21,12 +21,21 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-
+/**
+ * Classe qe define as configurações da documentação Swagger
+ * 
+ * @author miguel
+ * @version 0.2
+ */
 @Configuration
 @EnableSwagger2
 @ComponentScan(basePackageClasses = SwaggerConfig.class)
 public class SwaggerConfig extends WebMvcConfigurationSupport{                                    
 	
+	/**
+	 * Função central que constroi a documentação
+	 * @return
+	 */
 	@Bean
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
@@ -46,6 +55,10 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
 
     }
     	
+	/**
+	 * Função que define os metadados da API
+	 * @return ApiInfo - informações sobre a criação da API
+	 */
 	private ApiInfo metaData() {
         ApiInfo apiInfo = new ApiInfo(
                 "CADEduc",
@@ -58,6 +71,9 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
         return apiInfo;
     }
 	
+	/**
+	 * Procedimento que define a rota inicial da API para a documentação Swagger
+	 */
 	@Override
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("swagger-ui.html")

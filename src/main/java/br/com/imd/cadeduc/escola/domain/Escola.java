@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import br.com.imd.cadeduc.ensino.domain.Serie;
 import br.com.imd.cadeduc.localizacao.domain.Endereco;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
@@ -28,12 +29,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "escola", schema = "escola")
+@ApiModel
 public class Escola {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_escola")
-	@ApiModelProperty(notes = "ID gerado automaticamente pela base de dados")
+	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
 
 	@ApiModelProperty(notes = "Nome da instituição", required = true)

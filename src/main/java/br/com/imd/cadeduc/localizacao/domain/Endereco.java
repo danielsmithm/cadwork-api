@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
@@ -23,46 +24,48 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "endereco", schema = "localizacao")
+@ApiModel
 public class Endereco {
 
-	@Id	
+	@Id
 	@Column(name = "id_endereco")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@ApiModelProperty(notes = "ID gerado automaticamente pela base de dados")
+	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
 
-	@ApiModelProperty(notes = "Logradouro de um endereço, ex: Rua, Av. etc.",required = true)
+	@ApiModelProperty(notes = "Logradouro de um endereço, ex: Rua, Av. etc.", required = true)
 	private String logradouro;
-	
-	@ApiModelProperty(notes = "Numero de uma instituição",required = true)
+
+	@ApiModelProperty(notes = "Numero de uma instituição", required = true)
 	private String numero;
-	
+
 	@ApiModelProperty(notes = "Complementação do endereço")
 	private String complemento;
-	
-	@ApiModelProperty(notes = "Bairro da Instituição",required = true)
+
+	@ApiModelProperty(notes = "Bairro da Instituição", required = true)
 	private String bairro;
-	
-	@ApiModelProperty(notes = "CEP do endereço",required = true)
+
+	@ApiModelProperty(notes = "CEP do endereço", required = true)
 	private String cep;
-	@ApiModelProperty(notes = "Latitude da Instituição",required = true)
+	@ApiModelProperty(notes = "Latitude da Instituição", required = true)
 	private double latitude;
-	
-	@ApiModelProperty(notes = "Longitude da Instituição",required = true)
+
+	@ApiModelProperty(notes = "Longitude da Instituição", required = true)
 	private double longitude;
-	
+
 	@Column(name = "tipo_localizacao")
 	@Enumerated(EnumType.ORDINAL)
-	@ApiModelProperty(notes = "Tipo do local da instituição",required = true)
+	@ApiModelProperty(notes = "Tipo do local da instituição", required = true)
 	private TipoLocalizacaoEnum tipoLocalizacao;
 
 	@OneToOne
 	@JoinColumn(name = "id_municipio")
-	@ApiModelProperty(notes = "Município da instituição ",required = true)
+	@ApiModelProperty(notes = "Município da instituição ", required = true)
 	private Municipio municipio;
 
 	/**
 	 * Método para retorno do id de uma instância de Endereco
+	 * 
 	 * @return Long - Valor do id
 	 */
 	public Long getId() {
@@ -71,7 +74,9 @@ public class Endereco {
 
 	/**
 	 * Altera o valor do id de uma instância de Endereco
-	 * @param id Long - Novo valor do id
+	 * 
+	 * @param id
+	 *            Long - Novo valor do id
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -79,6 +84,7 @@ public class Endereco {
 
 	/**
 	 * Retorna o logradouro de um endereço
+	 * 
 	 * @return String - logradouro de um endereço
 	 */
 	public String getLogradouro() {
@@ -87,7 +93,9 @@ public class Endereco {
 
 	/**
 	 * Altera o logradouro de um endereço
-	 * @param logradouro String - novo logradouro de um endereço
+	 * 
+	 * @param logradouro
+	 *            String - novo logradouro de um endereço
 	 */
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
@@ -95,6 +103,7 @@ public class Endereco {
 
 	/**
 	 * Retorna o número de um endereço
+	 * 
 	 * @return String - número de um endereço
 	 */
 	public String getNumero() {
@@ -103,7 +112,9 @@ public class Endereco {
 
 	/**
 	 * Altera o número de um endereço
-	 * @param numero String - número de um endereço
+	 * 
+	 * @param numero
+	 *            String - número de um endereço
 	 */
 	public void setNumero(String numero) {
 		this.numero = numero;
@@ -111,6 +122,7 @@ public class Endereco {
 
 	/**
 	 * Retorna o complemento de um endereço
+	 * 
 	 * @return String - complemento de um endereço
 	 */
 	public String getComplemento() {
@@ -119,7 +131,9 @@ public class Endereco {
 
 	/**
 	 * Altera o complemento de um endereço
-	 * @param complemento String - novo complemento de um endereço
+	 * 
+	 * @param complemento
+	 *            String - novo complemento de um endereço
 	 */
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
@@ -127,6 +141,7 @@ public class Endereco {
 
 	/**
 	 * Retorna o bairro de um endereço
+	 * 
 	 * @return String - bairro de um endereço
 	 */
 	public String getBairro() {
@@ -135,7 +150,9 @@ public class Endereco {
 
 	/**
 	 * Altera o bairro de um endereço
-	 * @param bairro String - novo bairro de um endereço
+	 * 
+	 * @param bairro
+	 *            String - novo bairro de um endereço
 	 */
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
@@ -143,6 +160,7 @@ public class Endereco {
 
 	/**
 	 * Retorna o CEP de um endereço
+	 * 
 	 * @return String - CEP de um endereço
 	 */
 	public String getCep() {
@@ -151,7 +169,9 @@ public class Endereco {
 
 	/**
 	 * Altera o CEP de um endereço
-	 * @param cep String - novo CEP de um endereço
+	 * 
+	 * @param cep
+	 *            String - novo CEP de um endereço
 	 */
 	public void setCep(String cep) {
 		this.cep = cep;
@@ -159,6 +179,7 @@ public class Endereco {
 
 	/**
 	 * Retorna a latitude de um endereço
+	 * 
 	 * @return double - latitude de um endereço
 	 */
 	public double getLatitude() {
@@ -167,7 +188,9 @@ public class Endereco {
 
 	/**
 	 * Altera a latitude de um endereço
-	 * @param latitude double - nova latitude de um endereço
+	 * 
+	 * @param latitude
+	 *            double - nova latitude de um endereço
 	 */
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
@@ -175,15 +198,18 @@ public class Endereco {
 
 	/**
 	 * Retorna a longitude de um endereço
+	 * 
 	 * @return double - longitude de um endereço
 	 */
 	public double getLongitude() {
 		return longitude;
 	}
-	
+
 	/**
 	 * Altera a longitude de um endereço
-	 * @param longitude double - nova longitude de um endereço
+	 * 
+	 * @param longitude
+	 *            double - nova longitude de um endereço
 	 */
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
@@ -191,15 +217,18 @@ public class Endereco {
 
 	/**
 	 * Retorna o município de um endereço
+	 * 
 	 * @return Municipio - município de um endereço
 	 */
 	public Municipio getMunicipio() {
 		return municipio;
 	}
-	
+
 	/**
 	 * Altera o município de um endereço
-	 * @param municipio Municipio - novo município de um endereço
+	 * 
+	 * @param municipio
+	 *            Municipio - novo município de um endereço
 	 */
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
@@ -207,6 +236,7 @@ public class Endereco {
 
 	/**
 	 * Retorna o tipo de localização de um endereço
+	 * 
 	 * @return TipoLocalizacaoEnum - tipo de localização de um endereço
 	 */
 	public TipoLocalizacaoEnum getTipoLocalizacao() {
@@ -215,11 +245,12 @@ public class Endereco {
 
 	/**
 	 * Altera o tipo de localização de um endereço
-	 * @param tipoLocalizacao TipoLocalizacaoEnum - novo tipo de localização de um endereço
+	 * 
+	 * @param tipoLocalizacao
+	 *            TipoLocalizacaoEnum - novo tipo de localização de um endereço
 	 */
 	public void setTipoLocalizacao(TipoLocalizacaoEnum tipoLocalizacao) {
 		this.tipoLocalizacao = tipoLocalizacao;
 	}
 
 }
-
