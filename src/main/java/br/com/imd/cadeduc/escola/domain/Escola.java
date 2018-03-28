@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Classe que define o modelo Escola
  * 
  * @author Miguel
- * @version 0.2
+ * @version 0.3
  *
  */
 
@@ -41,12 +42,15 @@ public class Escola {
 	@ApiModelProperty(notes = "Nome da instituição", required = true)
 	private String nome;
 
+	@ApiModelProperty(notes = "Telefone da instituição")
+	private String telefone;
+
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "id_endereco")
 	@ApiModelProperty(notes = "Endereço da Instituição", required = true)
 	private Endereco endereco;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_serie")
 	@ApiModelProperty(notes = "Séries da instituição")
 	private List<Serie> series;
@@ -107,6 +111,44 @@ public class Escola {
 	 */
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	/**
+	 * Método para retorno o telefone da escola
+	 * 
+	 * @return String - Telefone da escola
+	 */
+	public String getTelefone() {
+		return telefone;
+	}
+
+	/**
+	 * Altera o telefone de uma instância de Escola
+	 * 
+	 * @param telefone
+	 *            String - Novo Telefone
+	 */
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	/**
+	 * Método para retornar as séries de uma escola
+	 * 
+	 * @return List<Serie> series da escola
+	 */
+	public List<Serie> getSeries() {
+		return series;
+	}
+
+	/**
+	 * Altera as séries de uma instância de Escola
+	 * 
+	 * @param series
+	 *            String - Novo Telefone
+	 */
+	public void setSeries(List<Serie> series) {
+		this.series = series;
 	}
 
 }

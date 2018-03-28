@@ -73,6 +73,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
 	
 	/**
 	 * Procedimento que define a rota inicial da API para a documentação Swagger
+	 * dominio/swagger-ui.html
 	 */
 	@Override
 	protected void addResourceHandlers(ResourceHandlerRegistry registry) {

@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Classe que define o modelo Endereco
  * 
  * @author Welligton Miguel
- * @version 0.2
+ * @version 0.3
  */
 
 @Entity
@@ -47,10 +47,13 @@ public class Endereco {
 
 	@ApiModelProperty(notes = "CEP do endereço", required = true)
 	private String cep;
+	
 	@ApiModelProperty(notes = "Latitude da Instituição", required = true)
+	@Column(nullable = true)
 	private double latitude;
 
 	@ApiModelProperty(notes = "Longitude da Instituição", required = true)
+	@Column(nullable = true)
 	private double longitude;
 
 	@Column(name = "tipo_localizacao")
