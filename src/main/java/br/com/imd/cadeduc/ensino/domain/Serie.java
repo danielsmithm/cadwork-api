@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import br.com.imd.cadeduc.escola.domain.Escola;
 import io.swagger.annotations.ApiModel;
@@ -34,6 +35,7 @@ public class Serie {
 	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
 
+	@NotNull(message = "Preencha o campo")
 	@Column(name = "nome")
 	@ApiModelProperty(notes = "Nome da série", required = true)
 	private String nome;

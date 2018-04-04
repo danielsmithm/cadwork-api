@@ -16,7 +16,7 @@ import springfox.documentation.service.ResponseMessage;
 /**
  * Classe que define as mensagens de respostas para solicitações http
  * @author miguel
- * @version 0.2
+ * @version 0.3
  *
  */
 public class ResponseMessagesConfig {
@@ -85,5 +85,11 @@ public class ResponseMessagesConfig {
 		return newArrayList(mensagens.values());
 		
 	}
+
+
+	public Map<Integer, ResponseMessage> getMensagens() {
+		return mensagens;
+	}
+	
 	
 }
