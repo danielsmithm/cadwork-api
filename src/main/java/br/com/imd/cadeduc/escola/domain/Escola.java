@@ -45,7 +45,7 @@ public class Escola {
 	@ApiModelProperty(notes = "Telefone da instituição")
 	private String telefone;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_endereco")
 	@ApiModelProperty(notes = "Endereço da Instituição", required = true)
 	private Endereco endereco;
