@@ -4,59 +4,34 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.domain.exception.ResourceEmptyException;
 import br.com.imd.cadeduc.ensino.dao.SerieDAO;
 import br.com.imd.cadeduc.ensino.domain.Serie;
 import br.com.imd.cadeduc.service.GenericService;
-import br.com.imd.cadeduc.service.exception.GerericServiceException;
-import br.com.imd.cadeduc.service.exception.ResourceNotFoundException;
-import br.com.imd.cadeduc.util.ValidatorUtil;
+import br.com.imd.cadeduc.service.exception.GenericServiceException;
 
-@Service
-public class SerieService implements GenericService<Serie> {
+@Component
+public class SerieService extends GenericService<Serie> {
 
-	@Autowired
-	SerieDAO serieDao;
-
+	@Autowired		
+	public void setDao(SerieDAO dao) {
+		super.setDao(dao);	
+	}
+	
 	@Override
-	public List<Serie> listar() throws GerericServiceException {
-		List<Serie> series = serieDao.findAll();
-
-		if (series.isEmpty()) {
-			throw new ResourceNotFoundException();
-		}
-
-		return series;
+	public List<Serie> listar() throws GenericServiceException {
+		return super.listar();
 	}
 
 	@Override
-	public void salvar(Serie serie, BindingResult resultado) throws GerericServiceException {
-
-		if (resultado.hasErrors()) {
-			throw new ResourceEmptyException(ValidatorUtil.gerarErrorsInJson(resultado.getAllErrors()));
-		}
-		try {
-			serieDao.save(serie);
-
-
-		} catch (Exception e) {
-			throw new ResourceEmptyException(e.getMessage());
-		}
-
+	public void salvar(Serie serie, BindingResult resultado) throws GenericServiceException {
+		super.salvar(serie, resultado);
 	}
 
 	@Override
-	public Optional<Serie> buscar(Long id, BindingResult resultado) throws GerericServiceException {
-
-		Optional<Serie> serie = serieDao.findById(id);
-
-		if (!serie.isPresent()) {
-			throw new ResourceNotFoundException();
-		}
-		return serie;
+	public Optional<Serie> buscar(Long id, BindingResult resultado) throws GenericServiceException {
+		return super.buscar(id, resultado);
 	}
-
 }

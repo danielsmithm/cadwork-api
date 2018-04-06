@@ -3,15 +3,56 @@ package br.com.imd.cadeduc.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.service.exception.GerericServiceException;
+import br.com.imd.cadeduc.domain.exception.GenericDAO;
+import br.com.imd.cadeduc.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.service.exception.ResourceEmptyException;
+import br.com.imd.cadeduc.service.exception.ResourceNotFoundException;
+import br.com.imd.cadeduc.util.ValidatorUtil;
 
-public interface GenericService<T> {
+@Service
+public abstract class GenericService<T> {
 
-	public List<T> listar() throws GerericServiceException;
+	protected GenericDAO<T> dao;
 
-	public void salvar(T t, BindingResult br) throws GerericServiceException;
+	public void setDao(GenericDAO<T> dao) {
+		this.dao = dao;
+	}
 
-	public Optional<T> buscar(Long id, BindingResult br) throws GerericServiceException;
+	protected List<T> listar() throws GenericServiceException {
+		List<T> entidades = dao.findAll();
+
+		if (entidades.isEmpty()) {
+			throw new ResourceNotFoundException();
+		}
+
+		return entidades;
+	}
+
+	public void salvar(T t, BindingResult resultado) throws GenericServiceException {
+
+		if (resultado.hasErrors()) {
+			throw new ResourceEmptyException(ValidatorUtil.gerarErrorsInJson(resultado.getAllErrors()));
+		}
+		try {
+			dao.save(t);
+
+		} catch (Exception e) {
+			throw new GenericServiceException(e.getMessage());
+		}
+
+	}
+
+	protected Optional<T> buscar(Long id, BindingResult resultado) throws GenericServiceException {
+
+		Optional<T> entidade = dao.findById(id);
+
+		if (!entidade.isPresent()) {
+			throw new ResourceNotFoundException();
+		}
+		return entidade;
+	}
+
 }

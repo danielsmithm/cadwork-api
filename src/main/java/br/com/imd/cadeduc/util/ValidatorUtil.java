@@ -2,8 +2,6 @@ package br.com.imd.cadeduc.util;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
@@ -22,15 +20,10 @@ public class ValidatorUtil {
 			message.append(",");
 		}
 		message.append("]");
-		
-		String errors = message.toString().replace("},]","}]");
+
+		String errors = message.toString().replace("},]", "}]");
 
 		return new Gson().toJson(errors);
-	}
-
-	public static ResponseEntity<String> gerarRespostaInJson(String recursor,HttpStatus status) {
-		return new ResponseEntity<String>(
-				new Gson().toJson("Escola cadastrada com sucesso!"),status);
 	}
 
 }

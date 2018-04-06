@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -35,9 +36,11 @@ public class EtapaEnsino {
 	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
 
+	@NotNull
 	@ApiModelProperty(notes = "Nome da Etapa de Ensino", required = true)
 	private String nome;
 
+	@NotNull
 	@Column(name = "vagas_disponiveis")
 	@ApiModelProperty(notes = "Quantidade de vagas disponíveis", required = true)
 	private int vagasDisponiveis;
@@ -46,6 +49,7 @@ public class EtapaEnsino {
 	@ApiModelProperty(notes = "séries da etapa de ensino")
 	private List<Serie> series;
 
+	@NotNull
 	@Column(name = "tipo_etapa_ensino")
 	@Enumerated(EnumType.STRING)
 	@ApiModelProperty(notes = "Tipo da etapa de ensino", required = true)

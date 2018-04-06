@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.imd.cadeduc.ensino.domain.Serie;
 import br.com.imd.cadeduc.ensino.service.SerieService;
-import br.com.imd.cadeduc.service.exception.GerericServiceException;
+import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
 @RestController
@@ -32,30 +32,30 @@ public class SerieResources {
 	SerieService serieService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Serie>> listar() throws GerericServiceException {
+	public ResponseEntity<List<Serie>> listar() throws GenericServiceException {
 
 		return new ResponseEntity<>(serieService.listar(), HttpStatus.OK);
 
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@Valid @RequestBody Serie serie, BindingResult resultado){
+	public ResponseEntity<String> salvar(@Valid @RequestBody Serie serie, BindingResult resultado) {
 		try {
-			serieService.salvar(serie,resultado);
-			
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-			        .buildAndExpand(serie.getId()).toUri();
+			serieService.salvar(serie, resultado);
 
-			    return ResponseEntity.created(uri).build();
-			
-		} catch (GerericServiceException e) {
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(serie.getId())
+					.toUri();
+
+			return ResponseEntity.created(uri).build();
+
+		} catch (GenericServiceException e) {
 			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
 		}
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<Optional<Serie>> buscar(@PathVariable("id") Long id, BindingResult resultado)
-			throws GerericServiceException {
+			throws GenericServiceException {
 		return new ResponseEntity<>(serieService.buscar(id, resultado), HttpStatus.OK);
 	}
 }
