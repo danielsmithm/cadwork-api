@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.domain.exception.GenericDAO;
+import br.com.imd.cadeduc.dao.GenericDAO;
 import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import br.com.imd.cadeduc.service.exception.ResourceEmptyException;
 import br.com.imd.cadeduc.service.exception.ResourceNotFoundException;
