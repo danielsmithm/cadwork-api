@@ -24,7 +24,7 @@ import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
 @RestController
-@RequestMapping(value = "/series")
+@RequestMapping(value = "/series", produces = "application/json")
 @Api(tags = "Séries", value = "onlinestore", description = "Operações pertinentes a séries")
 public class SerieResources {
 

@@ -23,7 +23,7 @@ import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
 @RestController
-@RequestMapping(value = "/municipios")
+@RequestMapping(value = "/municipios", produces = "application/json")
 @Api(tags = "Municípios", value = "onlinestore", description = "Operações pertinentes a municípios")
 public class MunicipioResources {
 
