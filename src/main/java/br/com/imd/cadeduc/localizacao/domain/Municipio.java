@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -16,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Classe que define o modelo Municipio
  * 
  * @author Miguel
- * @version 0.2
+ * @version 0.3
  */
 
 @Entity
@@ -30,9 +31,11 @@ public class Municipio {
 	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
 
+	@NotNull
 	@ApiModelProperty(notes = "Nome de um município", required = true)
 	private String nome;
 
+	@NotNull
 	@Column(name = "estado")
 	@Enumerated(EnumType.STRING)
 	@ApiModelProperty(notes = "Estado ao qual o municipio pertence", required = true)
