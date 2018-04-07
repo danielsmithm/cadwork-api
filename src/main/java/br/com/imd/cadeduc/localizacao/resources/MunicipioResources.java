@@ -52,8 +52,7 @@ public class MunicipioResources {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Optional<Municipio> buscar(@Valid @PathVariable("id") Long id, BindingResult resultado)
-			throws GenericServiceException {
-		return municipioService.buscar(id, resultado);
+	public Optional<Municipio> buscar(@PathVariable("id") Long id) throws GenericServiceException {
+		return municipioService.buscar(id);
 	}
 }

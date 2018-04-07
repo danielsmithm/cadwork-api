@@ -31,8 +31,8 @@ public class EscolaService extends GenericService<Escola> {
 	}
 
 	@Override
-	public Optional<Escola> buscar(Long id, BindingResult resultado) throws GenericServiceException {
-		return super.buscar(id, resultado);
+	public Optional<Escola> buscar(Long id) throws GenericServiceException {
+		return super.buscar(id);
 	}
 
 }

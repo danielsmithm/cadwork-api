@@ -52,8 +52,7 @@ public class EscolaResources {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Optional<Escola> buscar(@Valid @PathVariable("id") Long id, BindingResult resultado)
-			throws GenericServiceException {
-		return escolaService.buscar(id, resultado);
+	public Optional<Escola> buscar(@PathVariable("id") Long id) throws GenericServiceException {
+		return escolaService.buscar(id);
 	}
 }

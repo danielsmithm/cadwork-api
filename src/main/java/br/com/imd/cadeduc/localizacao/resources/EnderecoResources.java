@@ -23,8 +23,8 @@ import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
 @RestController
-@RequestMapping(value = "/enderecos")
-@Api(tags = "Endereços", description = "Operações pertinentes a endereços")
+@RequestMapping(value = "/enderecos", produces = "application/json")
+@Api(tags = "Enderecos", description = "Operações pertinentes a endereços")
 public class EnderecoResources {
 
 	@Autowired
@@ -52,9 +52,9 @@ public class EnderecoResources {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Optional<Endereco> buscar(@Valid @PathVariable("id") Long id, BindingResult resultado)
+	public Optional<Endereco> buscar(@PathVariable("id") Long id)
 			throws GenericServiceException {
-		return enderecoService.buscar(id, resultado);
+		return enderecoService.buscar(id);
 	}
 
 }

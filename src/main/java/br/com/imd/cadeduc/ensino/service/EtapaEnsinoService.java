@@ -31,7 +31,7 @@ public class EtapaEnsinoService extends GenericService<EtapaEnsino> {
 	}
 
 	@Override
-	public Optional<EtapaEnsino> buscar(Long id, BindingResult resultado) throws GenericServiceException {
-		return super.buscar(id, resultado);
+	public Optional<EtapaEnsino> buscar(Long id) throws GenericServiceException {
+		return super.buscar(id);
 	}
 }

@@ -54,8 +54,8 @@ public class SerieResources {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<Optional<Serie>> buscar(@PathVariable("id") Long id, BindingResult resultado)
+	public @ResponseBody ResponseEntity<Optional<Serie>> buscar(@PathVariable("id") Long id)
 			throws GenericServiceException {
-		return new ResponseEntity<>(serieService.buscar(id, resultado), HttpStatus.OK);
+		return new ResponseEntity<>(serieService.buscar(id), HttpStatus.OK);
 	}
 }

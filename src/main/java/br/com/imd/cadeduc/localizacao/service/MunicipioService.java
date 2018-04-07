@@ -31,7 +31,7 @@ public class MunicipioService extends GenericService<Municipio>{
 	}
 
 	@Override
-	public Optional<Municipio> buscar(Long id, BindingResult resultado) throws GenericServiceException {
-		return super.buscar(id, resultado);
+	public Optional<Municipio> buscar(Long id) throws GenericServiceException {
+		return super.buscar(id);
 	}
 }

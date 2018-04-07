@@ -52,8 +52,8 @@ public class EtapaEnsinoResources {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<Optional<EtapaEnsino>> buscar(@PathVariable("id") Long id,
-			BindingResult resultado) throws GenericServiceException {
-		return new ResponseEntity<>(etapaEnsinoService.buscar(id, resultado), HttpStatus.OK);
+	public @ResponseBody ResponseEntity<Optional<EtapaEnsino>> buscar(@PathVariable("id") Long id)
+			throws GenericServiceException {
+		return new ResponseEntity<>(etapaEnsinoService.buscar(id), HttpStatus.OK);
 	}
 }

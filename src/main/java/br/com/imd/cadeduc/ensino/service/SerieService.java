@@ -31,7 +31,7 @@ public class SerieService extends GenericService<Serie> {
 	}
 
 	@Override
-	public Optional<Serie> buscar(Long id, BindingResult resultado) throws GenericServiceException {
-		return super.buscar(id, resultado);
+	public Optional<Serie> buscar(Long id) throws GenericServiceException {
+		return super.buscar(id);
 	}
 }

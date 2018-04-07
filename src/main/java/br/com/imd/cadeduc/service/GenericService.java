@@ -45,7 +45,7 @@ public abstract class GenericService<T> {
 
 	}
 
-	protected Optional<T> buscar(Long id, BindingResult resultado) throws GenericServiceException {
+	protected Optional<T> buscar(Long id) throws GenericServiceException {
 
 		Optional<T> entidade = dao.findById(id);
 

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
@@ -34,36 +35,40 @@ public class Endereco {
 	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
 
-	@NotNull
+	@NotBlank(message = "Campo em branco")
+	@NotNull(message = "Campo nulo")
 	@ApiModelProperty(notes = "Logradouro de um endereço, ex: Rua, Av. etc.", required = true)
 	private String logradouro;
 
-	@NotNull
+	@NotBlank(message = "Campo em branco")
+	@NotNull(message = "Campo nulo")
 	@ApiModelProperty(notes = "Numero de uma instituição", required = true)
 	private String numero;
 
 	@ApiModelProperty(notes = "Complementação do endereço")
 	private String complemento;
 
-	@NotNull
+	@NotBlank(message = "Campo em branco")
+	@NotNull(message = "Campo nulo")
 	@ApiModelProperty(notes = "Bairro da Instituição", required = true)
 	private String bairro;
 
-	@NotNull
+	@NotBlank(message = "Campo em branco")
+	@NotNull(message = "Campo nulo")
 	@ApiModelProperty(notes = "CEP do endereço", required = true)
 	private String cep;
-	
-	@NotNull
+
+	@NotNull(message = "Campo nulo")
 	@ApiModelProperty(notes = "Latitude da Instituição", required = true)
 	@Column(nullable = true)
 	private double latitude;
 
-	@NotNull
+	@NotNull(message = "Campo nulo")
 	@ApiModelProperty(notes = "Longitude da Instituição", required = true)
 	@Column(nullable = true)
 	private double longitude;
 
-	@NotNull
+	@NotNull(message = "Campo nulo")
 	@Column(name = "tipo_localizacao")
 	@Enumerated(EnumType.ORDINAL)
 	@ApiModelProperty(notes = "Tipo do local da instituição", required = true)

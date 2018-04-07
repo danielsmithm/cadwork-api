@@ -31,7 +31,7 @@ public class EnderecoService extends GenericService<Endereco> {
 	}
 
 	@Override
-	public Optional<Endereco> buscar(Long id, BindingResult resultado) throws GenericServiceException {
-		return super.buscar(id, resultado);
+	public Optional<Endereco> buscar(Long id) throws GenericServiceException {
+		return super.buscar(id);
 	}
 }
