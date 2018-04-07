@@ -37,11 +37,11 @@ public class EnderecoResources {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@Valid @RequestBody Endereco municipio, BindingResult resultado) {
+	public ResponseEntity<String> salvar(@Valid @RequestBody Endereco endereco, BindingResult resultado) {
 		try {
-			enderecoService.salvar(municipio, resultado);
+			enderecoService.salvar(endereco, resultado);
 
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(municipio.getId())
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(endereco.getId())
 					.toUri();
 
 			return ResponseEntity.created(uri).build();

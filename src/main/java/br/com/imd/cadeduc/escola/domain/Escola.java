@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import br.com.imd.cadeduc.ensino.domain.Serie;
 import br.com.imd.cadeduc.localizacao.domain.Endereco;
@@ -39,12 +40,14 @@ public class Escola {
 	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
 
+	@NotNull
 	@ApiModelProperty(notes = "Nome da instituição", required = true)
 	private String nome;
 
 	@ApiModelProperty(notes = "Telefone da instituição")
 	private String telefone;
 
+	@NotNull
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "id_endereco")
 	@ApiModelProperty(notes = "Endereço da Instituição", required = true)
