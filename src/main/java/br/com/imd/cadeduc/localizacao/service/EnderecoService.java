@@ -24,8 +24,8 @@ public class EnderecoService extends GenericService<Endereco>{
 	}
 
 	@Override
-	public void salvar(Endereco municipio, BindingResult resultado) throws GenericServiceException {
-		super.salvar(municipio, resultado);
+	public void salvar(Endereco endereco, BindingResult resultado) throws GenericServiceException {
+		super.salvar(endereco, resultado);
 	}
 
 	@Override

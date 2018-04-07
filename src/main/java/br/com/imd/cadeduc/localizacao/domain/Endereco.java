@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Classe que define o modelo Endereco
  * 
  * @author Welligton Miguel
- * @version 0.3
+ * @version 0.4
  */
 
 @Entity
@@ -33,34 +34,42 @@ public class Endereco {
 	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
 	private Long id;
 
+	@NotNull
 	@ApiModelProperty(notes = "Logradouro de um endereço, ex: Rua, Av. etc.", required = true)
 	private String logradouro;
 
+	@NotNull
 	@ApiModelProperty(notes = "Numero de uma instituição", required = true)
 	private String numero;
 
 	@ApiModelProperty(notes = "Complementação do endereço")
 	private String complemento;
 
+	@NotNull
 	@ApiModelProperty(notes = "Bairro da Instituição", required = true)
 	private String bairro;
 
+	@NotNull
 	@ApiModelProperty(notes = "CEP do endereço", required = true)
 	private String cep;
 	
+	@NotNull
 	@ApiModelProperty(notes = "Latitude da Instituição", required = true)
 	@Column(nullable = true)
 	private double latitude;
 
+	@NotNull
 	@ApiModelProperty(notes = "Longitude da Instituição", required = true)
 	@Column(nullable = true)
 	private double longitude;
 
+	@NotNull
 	@Column(name = "tipo_localizacao")
 	@Enumerated(EnumType.ORDINAL)
 	@ApiModelProperty(notes = "Tipo do local da instituição", required = true)
 	private TipoLocalizacaoEnum tipoLocalizacao;
 
+	@NotNull
 	@OneToOne
 	@JoinColumn(name = "id_municipio")
 	@ApiModelProperty(notes = "Município da instituição ", required = true)
