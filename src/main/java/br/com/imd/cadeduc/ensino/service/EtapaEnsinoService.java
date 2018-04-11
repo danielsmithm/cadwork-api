@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.ensino.dao.EtapaEnsinoDAO;
+import br.com.imd.cadeduc.dao.GenericDAO;
 import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
 import br.com.imd.cadeduc.service.GenericService;
 import br.com.imd.cadeduc.service.exception.GenericServiceException;
@@ -16,7 +16,7 @@ import br.com.imd.cadeduc.service.exception.GenericServiceException;
 public class EtapaEnsinoService extends GenericService<EtapaEnsino> {
 
 	@Autowired
-	public void setDao(EtapaEnsinoDAO dao) {
+	public void setDao(GenericDAO<EtapaEnsino> dao) {
 		super.setDao(dao);
 	}
 

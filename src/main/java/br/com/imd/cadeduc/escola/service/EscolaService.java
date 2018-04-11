@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.escola.dao.EscolaDAO;
+import br.com.imd.cadeduc.dao.GenericDAO;
 import br.com.imd.cadeduc.escola.domain.Escola;
 import br.com.imd.cadeduc.service.GenericService;
 import br.com.imd.cadeduc.service.exception.GenericServiceException;
@@ -16,7 +16,7 @@ import br.com.imd.cadeduc.service.exception.GenericServiceException;
 public class EscolaService extends GenericService<Escola> {
 
 	@Autowired
-	public void setDao(EscolaDAO dao) {
+	public void setDao(GenericDAO<Escola> dao) {
 		super.setDao(dao);
 	}
 
