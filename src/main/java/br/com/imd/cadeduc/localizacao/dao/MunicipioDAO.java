@@ -1,10 +1,12 @@
 package br.com.imd.cadeduc.localizacao.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import br.com.imd.cadeduc.dao.GenericDAO;
 import br.com.imd.cadeduc.localizacao.domain.Municipio;
 
-public interface MunicipioDAO extends JpaRepository<Municipio, Long> 
+@Repository
+public interface MunicipioDAO extends GenericDAO<Municipio> 
 {
 
 }

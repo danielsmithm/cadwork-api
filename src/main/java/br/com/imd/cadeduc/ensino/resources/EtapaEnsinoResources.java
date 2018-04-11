@@ -1,21 +1,26 @@
 package br.com.imd.cadeduc.ensino.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.google.gson.Gson;
-
-import br.com.imd.cadeduc.ensino.dao.EtapaEnsinoDAO;
 import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
+import br.com.imd.cadeduc.ensino.service.EtapaEnsinoService;
+import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
 @RestController
@@ -24,22 +29,31 @@ import io.swagger.annotations.Api;
 public class EtapaEnsinoResources {
 
 	@Autowired
-	EtapaEnsinoDAO etapaEnsinoDao;
+	EtapaEnsinoService etapaEnsinoService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<EtapaEnsino> listar() {
-		return etapaEnsinoDao.findAll();
+	public ResponseEntity<List<EtapaEnsino>> listar() throws GenericServiceException {
+		return new ResponseEntity<>(etapaEnsinoService.listar(), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@RequestBody EtapaEnsino etapaEnsino) {
-		etapaEnsinoDao.save(etapaEnsino);
-		return new ResponseEntity<String>(
-				new Gson().toJson("Etapa de Ensino cadastrada com sucesso!"), HttpStatus.CREATED);
+	public ResponseEntity<String> salvar(@Valid @RequestBody EtapaEnsino etapaEnsino, BindingResult resultado) {
+		try {
+			etapaEnsinoService.salvar(etapaEnsino, resultado);
+
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etapaEnsino.getId())
+					.toUri();
+
+			return ResponseEntity.created(uri).build();
+
+		} catch (GenericServiceException e) {
+			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
+		}
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Optional<EtapaEnsino> buscar(@PathVariable("id") Long id) {
-		return etapaEnsinoDao.findById(id);
+	public @ResponseBody ResponseEntity<Optional<EtapaEnsino>> buscar(@PathVariable("id") Long id)
+			throws GenericServiceException {
+		return new ResponseEntity<>(etapaEnsinoService.buscar(id), HttpStatus.OK);
 	}
 }

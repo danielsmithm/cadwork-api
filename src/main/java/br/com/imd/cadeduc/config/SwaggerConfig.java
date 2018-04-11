@@ -41,7 +41,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
         return new Docket(DocumentationType.SWAGGER_2)  
           .select()
 	          .apis(RequestHandlerSelectors.basePackage("br.com.imd.cadeduc"))
-	          .paths(PathSelectors.regex("/.*"))
+	          .paths(PathSelectors.any())
 	          .build()
           .pathMapping("/")
           .directModelSubstitute(LocalDate.class, String.class)

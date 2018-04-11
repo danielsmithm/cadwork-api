@@ -1,47 +1,60 @@
 package br.com.imd.cadeduc.localizacao.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.google.gson.Gson;
-
-import br.com.imd.cadeduc.localizacao.dao.EnderecoDAO;
 import br.com.imd.cadeduc.localizacao.domain.Endereco;
+import br.com.imd.cadeduc.localizacao.service.EnderecoService;
+import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
 @RestController
-@RequestMapping(value = "/enderecos")
-@Api(tags = "Endereços", description = "Operações pertinentes a endereços")
+@RequestMapping(value = "/enderecos", produces = "application/json")
+@Api(tags = "Enderecos", description = "Operações pertinentes a endereços")
 public class EnderecoResources {
 
 	@Autowired
-	EnderecoDAO enderecoDao;
+	EnderecoService enderecoService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Endereco> listar() {
-		return enderecoDao.findAll();
+	public List<Endereco> listar() throws GenericServiceException {
+		return enderecoService.listar();
 
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@RequestBody Endereco endereco) {
-		enderecoDao.save(endereco);
-		return new ResponseEntity<String>(
-				new Gson().toJson("Endereço cadastrado com sucesso!"), HttpStatus.CREATED);
+	public ResponseEntity<String> salvar(@Valid @RequestBody Endereco endereco, BindingResult resultado) {
+		try {
+			enderecoService.salvar(endereco, resultado);
+
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(endereco.getId())
+					.toUri();
+
+			return ResponseEntity.created(uri).build();
+
+		} catch (GenericServiceException e) {
+			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
+		}
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Optional<Endereco> buscar(@PathVariable("id") Long id) {
-		return enderecoDao.findById(id);
+	public Optional<Endereco> buscar(@PathVariable("id") Long id)
+			throws GenericServiceException {
+		return enderecoService.buscar(id);
 	}
 
 }
