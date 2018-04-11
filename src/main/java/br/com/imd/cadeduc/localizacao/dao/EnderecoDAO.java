@@ -1,10 +1,12 @@
 package br.com.imd.cadeduc.localizacao.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import br.com.imd.cadeduc.dao.GenericDAO;
 import br.com.imd.cadeduc.localizacao.domain.Endereco;
 
-public interface EnderecoDAO extends JpaRepository<Endereco, Long>
+@Repository
+public interface EnderecoDAO extends GenericDAO<Endereco>
 {
 
 }

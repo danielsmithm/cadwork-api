@@ -8,30 +8,30 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
 import br.com.imd.cadeduc.dao.GenericDAO;
-import br.com.imd.cadeduc.ensino.domain.Serie;
+import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
 import br.com.imd.cadeduc.service.GenericService;
 import br.com.imd.cadeduc.service.exception.GenericServiceException;
 
 @Component
-public class SerieService extends GenericService<Serie> {
+public class EtapaEnsinoService extends GenericService<EtapaEnsino> {
 
-	@Autowired		
-	public void setDao(GenericDAO<Serie> dao) {
-		super.setDao(dao);	
+	@Autowired
+	public void setDao(GenericDAO<EtapaEnsino> dao) {
+		super.setDao(dao);
 	}
-	
+
 	@Override
-	public List<Serie> listar() throws GenericServiceException {
+	public List<EtapaEnsino> listar() throws GenericServiceException {
 		return super.listar();
 	}
 
 	@Override
-	public void salvar(Serie serie, BindingResult resultado) throws GenericServiceException {
-		super.salvar(serie, resultado);
+	public void salvar(EtapaEnsino etapaEnsino, BindingResult resultado) throws GenericServiceException {
+		super.salvar(etapaEnsino, resultado);
 	}
 
 	@Override
-	public Optional<Serie> buscar(Long id) throws GenericServiceException {
+	public Optional<EtapaEnsino> buscar(Long id) throws GenericServiceException {
 		return super.buscar(id);
 	}
 }
