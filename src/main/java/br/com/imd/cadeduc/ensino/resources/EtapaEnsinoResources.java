@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import br.com.imd.cadeduc.ensino.service.EtapaEnsinoService;
 import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping(value = "/etapasEnsino", produces = "application/json")
 @Api(tags = "Etapas de Ensino", description = "Operações pertinentes a etapas de ensino")
@@ -37,18 +39,15 @@ public class EtapaEnsinoResources {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@Valid @RequestBody EtapaEnsino etapaEnsino, BindingResult resultado) {
-		try {
-			etapaEnsinoService.salvar(etapaEnsino, resultado);
+	public ResponseEntity<String> salvar(@Valid @RequestBody EtapaEnsino etapaEnsino, BindingResult resultado) throws GenericServiceException {
 
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etapaEnsino.getId())
-					.toUri();
+		etapaEnsinoService.salvar(etapaEnsino, resultado);
 
-			return ResponseEntity.created(uri).build();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(etapaEnsino.getId())
+				.toUri();
 
-		} catch (GenericServiceException e) {
-			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
-		}
+		return ResponseEntity.created(uri).build();
+
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

@@ -16,7 +16,7 @@ import springfox.documentation.service.ResponseMessage;
 /**
  * Classe que define as mensagens de respostas para solicitações http
  * @author miguel
- * @version 0.3
+ * @version 0.4
  *
  */
 public class ResponseMessagesConfig {
@@ -57,6 +57,11 @@ public class ResponseMessagesConfig {
 										.code(HttpStatus.FORBIDDEN.value())
 										.message("Acesso ao recurso proibido")
 										.responseModel(new ModelRef("Forbidden"))
+										.build());
+		mensagens.put(new Integer(HttpStatus.NOT_ACCEPTABLE.ordinal()), new ResponseMessageBuilder()
+										.code(HttpStatus.NOT_ACCEPTABLE.value())
+										.message("Recurso não aceito")
+										.responseModel(new ModelRef("Not Acceptable"))
 										.build());
 	}
 
