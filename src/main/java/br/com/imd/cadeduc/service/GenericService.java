@@ -31,7 +31,7 @@ public abstract class GenericService<T> {
 		return entidades;
 	}
 
-	public void salvar(T t, BindingResult resultado) throws GenericServiceException {
+	protected void salvar(T t, BindingResult resultado) throws GenericServiceException {
 
 		if (resultado.hasErrors()) {
 			throw new ResourceEmptyException(ValidatorUtil.gerarErrorsInJson(resultado.getAllErrors()));

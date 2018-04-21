@@ -25,5 +25,10 @@ public class ValidatorUtil {
 
 		return new Gson().toJson(errors);
 	}
+	
+	public static boolean isEmpty(Object o) {
+		//Validar de forma genérica quando um objeto está ou não válido
+		return true;
+	}
 
 }

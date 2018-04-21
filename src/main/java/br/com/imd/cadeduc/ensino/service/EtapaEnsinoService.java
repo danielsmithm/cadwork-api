@@ -8,9 +8,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
 import br.com.imd.cadeduc.dao.GenericDAO;
+import br.com.imd.cadeduc.ensino.dao.EtapaEnsinoDAO;
 import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
 import br.com.imd.cadeduc.service.GenericService;
 import br.com.imd.cadeduc.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.service.exception.ResourceConflictException;
 
 @Component
 public class EtapaEnsinoService extends GenericService<EtapaEnsino> {
@@ -27,6 +29,10 @@ public class EtapaEnsinoService extends GenericService<EtapaEnsino> {
 
 	@Override
 	public void salvar(EtapaEnsino etapaEnsino, BindingResult resultado) throws GenericServiceException {
+		Optional<EtapaEnsino> etapaCadastrada = ((EtapaEnsinoDAO) dao).findEtapaEnsinoByNome(etapaEnsino.getNome());
+		if(etapaEnsino.getId()!=0 || etapaCadastrada.isPresent()) {
+			throw new ResourceConflictException();
+		}
 		super.salvar(etapaEnsino, resultado);
 	}
 

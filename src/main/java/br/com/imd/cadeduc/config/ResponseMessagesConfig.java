@@ -63,6 +63,11 @@ public class ResponseMessagesConfig {
 										.message("Recurso não aceito")
 										.responseModel(new ModelRef("Not Acceptable"))
 										.build());
+		mensagens.put(new Integer(HttpStatus.CONFLICT.ordinal()), new ResponseMessageBuilder()
+										.code(HttpStatus.CONFLICT.value())
+										.message("Recurso Já existente")
+										.responseModel(new ModelRef("Conflict"))
+										.build());
 	}
 
 	/**
