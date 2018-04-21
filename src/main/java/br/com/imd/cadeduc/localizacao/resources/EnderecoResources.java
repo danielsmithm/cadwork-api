@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import br.com.imd.cadeduc.localizacao.service.EnderecoService;
 import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
+@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
 @RestController
 @RequestMapping(value = "/enderecos", produces = "application/json")
 @Api(tags = "Enderecos", description = "Operações pertinentes a endereços")
