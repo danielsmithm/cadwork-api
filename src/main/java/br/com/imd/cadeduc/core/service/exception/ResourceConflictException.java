@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.service.exception;
+package br.com.imd.cadeduc.core.service.exception;
 
 public class ResourceConflictException extends GenericServiceException {
 

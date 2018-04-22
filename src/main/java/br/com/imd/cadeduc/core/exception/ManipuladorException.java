@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.exception;
+package br.com.imd.cadeduc.core.exception;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,12 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import br.com.imd.cadeduc.config.DetalheError;
-import br.com.imd.cadeduc.config.ResponseMessagesConfig;
-import br.com.imd.cadeduc.service.exception.GenericServiceException;
-import br.com.imd.cadeduc.service.exception.ResourceConflictException;
-import br.com.imd.cadeduc.service.exception.ResourceEmptyException;
-import br.com.imd.cadeduc.service.exception.ResourceNotFoundException;
+import br.com.imd.cadeduc.core.config.DetalheError;
+import br.com.imd.cadeduc.core.config.ResponseMessagesConfig;
+import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.core.service.exception.ResourceConflictException;
+import br.com.imd.cadeduc.core.service.exception.ResourceEmptyException;
+import br.com.imd.cadeduc.core.service.exception.ResourceNotFoundException;
 
 @ControllerAdvice
 public class ManipuladorException {

@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.dao.GenericDAO;
+import br.com.imd.cadeduc.core.dao.GenericDAO;
+import br.com.imd.cadeduc.core.service.GenericService;
+import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
 import br.com.imd.cadeduc.localizacao.domain.Endereco;
-import br.com.imd.cadeduc.service.GenericService;
-import br.com.imd.cadeduc.service.exception.GenericServiceException;
 
 @Component
 public class EnderecoService extends GenericService<Endereco> {

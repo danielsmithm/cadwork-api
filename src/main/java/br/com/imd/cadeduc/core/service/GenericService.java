@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.service;
+package br.com.imd.cadeduc.core.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.dao.GenericDAO;
-import br.com.imd.cadeduc.service.exception.GenericServiceException;
-import br.com.imd.cadeduc.service.exception.ResourceEmptyException;
-import br.com.imd.cadeduc.service.exception.ResourceNotFoundException;
+import br.com.imd.cadeduc.core.dao.GenericDAO;
+import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.core.service.exception.ResourceEmptyException;
+import br.com.imd.cadeduc.core.service.exception.ResourceNotFoundException;
 import br.com.imd.cadeduc.util.ValidatorUtil;
 
 @Service

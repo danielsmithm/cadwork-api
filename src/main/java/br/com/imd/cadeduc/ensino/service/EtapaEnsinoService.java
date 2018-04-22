@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.dao.GenericDAO;
+import br.com.imd.cadeduc.core.dao.GenericDAO;
+import br.com.imd.cadeduc.core.service.GenericService;
+import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.core.service.exception.ResourceConflictException;
 import br.com.imd.cadeduc.ensino.dao.EtapaEnsinoDAO;
 import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
-import br.com.imd.cadeduc.service.GenericService;
-import br.com.imd.cadeduc.service.exception.GenericServiceException;
-import br.com.imd.cadeduc.service.exception.ResourceConflictException;
 
 @Component
 public class EtapaEnsinoService extends GenericService<EtapaEnsino> {

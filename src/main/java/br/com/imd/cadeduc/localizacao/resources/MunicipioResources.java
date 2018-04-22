@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
 import br.com.imd.cadeduc.localizacao.domain.Municipio;
 import br.com.imd.cadeduc.localizacao.service.MunicipioService;
-import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
 @RestController

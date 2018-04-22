@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
 import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
 import br.com.imd.cadeduc.ensino.service.EtapaEnsinoService;
-import br.com.imd.cadeduc.service.exception.GenericServiceException;
 import io.swagger.annotations.Api;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)

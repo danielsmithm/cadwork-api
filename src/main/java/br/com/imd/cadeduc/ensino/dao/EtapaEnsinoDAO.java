@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import br.com.imd.cadeduc.dao.GenericDAO;
+import br.com.imd.cadeduc.core.dao.GenericDAO;
 import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
 
 @Repository

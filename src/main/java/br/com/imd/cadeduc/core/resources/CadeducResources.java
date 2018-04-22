@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.resources;
+package br.com.imd.cadeduc.core.resources;
 
 import javax.servlet.http.HttpServletResponse;
 
