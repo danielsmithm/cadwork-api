@@ -7,19 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.dao.GenericDAO;
+import br.com.imd.cadeduc.core.dao.GenericDAO;
+import br.com.imd.cadeduc.core.service.GenericService;
+import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.core.service.exception.ResourceConflictException;
+import br.com.imd.cadeduc.ensino.dao.SerieDAO;
 import br.com.imd.cadeduc.ensino.domain.Serie;
-import br.com.imd.cadeduc.service.GenericService;
-import br.com.imd.cadeduc.service.exception.GenericServiceException;
 
 @Component
 public class SerieService extends GenericService<Serie> {
 
-	@Autowired		
-	public void setDao(GenericDAO<Serie> dao) {
-		super.setDao(dao);	
-	}
-	
 	@Override
 	public List<Serie> listar() throws GenericServiceException {
 		return super.listar();
@@ -33,5 +30,19 @@ public class SerieService extends GenericService<Serie> {
 	@Override
 	public Optional<Serie> buscar(Long id) throws GenericServiceException {
 		return super.buscar(id);
+	}
+
+	
+	@Autowired		
+	public void setDao(GenericDAO<Serie> dao) {
+		super.dao = dao;	
+	}
+	
+	@Override
+	protected void verificaExistencia(Serie serie) throws GenericServiceException {
+		Optional<Serie> serieCadastrada = ((SerieDAO) dao).findSerieByNome(serie.getNome());
+ 		if(serie.getId()!=0 || serieCadastrada.isPresent()) {
+ 			throw new ResourceConflictException();
+ 		}
 	}
 }

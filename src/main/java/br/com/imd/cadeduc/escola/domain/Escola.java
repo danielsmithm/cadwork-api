@@ -60,6 +60,10 @@ public class Escola {
 	@ApiModelProperty(notes = "Séries da instituição")
 	private List<Serie> series;
 
+	public Escola() {
+		id = new Long(0);
+	}
+
 	/**
 	 * Método para retorno do id de uma instância de Escola
 	 * 

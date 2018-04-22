@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.config;
+package br.com.imd.cadeduc.core.config;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -16,7 +16,7 @@ import springfox.documentation.service.ResponseMessage;
 /**
  * Classe que define as mensagens de respostas para solicitações http
  * @author miguel
- * @version 0.3
+ * @version 0.4
  *
  */
 public class ResponseMessagesConfig {
@@ -57,6 +57,16 @@ public class ResponseMessagesConfig {
 										.code(HttpStatus.FORBIDDEN.value())
 										.message("Acesso ao recurso proibido")
 										.responseModel(new ModelRef("Forbidden"))
+										.build());
+		mensagens.put(new Integer(HttpStatus.NOT_ACCEPTABLE.ordinal()), new ResponseMessageBuilder()
+										.code(HttpStatus.NOT_ACCEPTABLE.value())
+										.message("Recurso não aceito")
+										.responseModel(new ModelRef("Not Acceptable"))
+										.build());
+		mensagens.put(new Integer(HttpStatus.CONFLICT.ordinal()), new ResponseMessageBuilder()
+										.code(HttpStatus.CONFLICT.value())
+										.message("Recurso Já existente")
+										.responseModel(new ModelRef("Conflict"))
 										.build());
 	}
 
