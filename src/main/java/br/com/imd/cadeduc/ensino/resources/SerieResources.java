@@ -24,7 +24,7 @@ import br.com.imd.cadeduc.ensino.domain.Serie;
 import br.com.imd.cadeduc.ensino.service.SerieService;
 import io.swagger.annotations.Api;
 
-@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping(value = "/series", produces = "application/json")
 @Api(tags = "Séries", value = "onlinestore", description = "Operações pertinentes a séries")
@@ -41,18 +41,12 @@ public class SerieResources {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@Valid @RequestBody Serie serie, BindingResult resultado) {
-		try {
-			serieService.salvar(serie, resultado);
+	public ResponseEntity<String> salvar(@Valid @RequestBody Serie serie, BindingResult resultado) throws GenericServiceException {
+		serieService.salvar(serie, resultado);
 
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(serie.getId())
-					.toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(serie.getId()).toUri();
 
-			return ResponseEntity.created(uri).build();
-
-		} catch (GenericServiceException e) {
-			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
-		}
+		return ResponseEntity.created(uri).build();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

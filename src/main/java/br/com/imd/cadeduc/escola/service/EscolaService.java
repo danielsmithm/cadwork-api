@@ -10,15 +10,12 @@ import org.springframework.validation.BindingResult;
 import br.com.imd.cadeduc.core.dao.GenericDAO;
 import br.com.imd.cadeduc.core.service.GenericService;
 import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.core.service.exception.ResourceConflictException;
+import br.com.imd.cadeduc.escola.dao.EscolaDAO;
 import br.com.imd.cadeduc.escola.domain.Escola;
 
 @Component
 public class EscolaService extends GenericService<Escola> {
-
-	@Autowired
-	public void setDao(GenericDAO<Escola> dao) {
-		super.setDao(dao);
-	}
 
 	@Override
 	public List<Escola> listar() throws GenericServiceException {
@@ -35,4 +32,16 @@ public class EscolaService extends GenericService<Escola> {
 		return super.buscar(id);
 	}
 
+	@Autowired
+	public void setDao(GenericDAO<Escola> dao) {
+		super.dao = dao;
+	}
+
+	@Override
+	protected void verificaExistencia(Escola escola) throws GenericServiceException {
+		Optional<Escola> escolaCadastrada = ((EscolaDAO) dao).findEscolaByEndereco(escola.getEndereco().getId());
+		if (escola.getId() != 0 || escolaCadastrada.isPresent()) {
+			throw new ResourceConflictException();
+		}
+	}
 }

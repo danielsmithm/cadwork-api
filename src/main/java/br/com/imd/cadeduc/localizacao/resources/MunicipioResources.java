@@ -7,7 +7,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,18 +36,13 @@ public class MunicipioResources {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@Valid @RequestBody Municipio municipio, BindingResult resultado) {
-		try {
-			municipioService.salvar(municipio, resultado);
+	public ResponseEntity<String> salvar(@Valid @RequestBody Municipio municipio, BindingResult resultado) throws GenericServiceException {
+		municipioService.salvar(municipio, resultado);
 
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(municipio.getId())
-					.toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(municipio.getId()).toUri();
 
-			return ResponseEntity.created(uri).build();
+		return ResponseEntity.created(uri).build();
 
-		} catch (GenericServiceException e) {
-			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
-		}
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

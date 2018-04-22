@@ -7,7 +7,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +22,7 @@ import br.com.imd.cadeduc.localizacao.domain.Endereco;
 import br.com.imd.cadeduc.localizacao.service.EnderecoService;
 import io.swagger.annotations.Api;
 
-@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping(value = "/enderecos", produces = "application/json")
 @Api(tags = "Enderecos", description = "Operações pertinentes a endereços")
@@ -39,23 +38,18 @@ public class EnderecoResources {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@Valid @RequestBody Endereco endereco, BindingResult resultado) {
-		try {
-			enderecoService.salvar(endereco, resultado);
+	public ResponseEntity<String> salvar(@Valid @RequestBody Endereco endereco, BindingResult resultado) throws GenericServiceException {
 
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(endereco.getId())
-					.toUri();
+		enderecoService.salvar(endereco, resultado);
 
-			return ResponseEntity.created(uri).build();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(endereco.getId())
+				.toUri();
 
-		} catch (GenericServiceException e) {
-			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(e.getMessage());
-		}
+		return ResponseEntity.created(uri).build();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Optional<Endereco> buscar(@PathVariable("id") Long id)
-			throws GenericServiceException {
+	public Optional<Endereco> buscar(@PathVariable("id") Long id) throws GenericServiceException {
 		return enderecoService.buscar(id);
 	}
 

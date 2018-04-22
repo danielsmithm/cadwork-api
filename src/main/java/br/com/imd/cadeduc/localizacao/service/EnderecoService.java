@@ -10,15 +10,12 @@ import org.springframework.validation.BindingResult;
 import br.com.imd.cadeduc.core.dao.GenericDAO;
 import br.com.imd.cadeduc.core.service.GenericService;
 import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.core.service.exception.ResourceConflictException;
+import br.com.imd.cadeduc.localizacao.dao.EnderecoDAO;
 import br.com.imd.cadeduc.localizacao.domain.Endereco;
 
 @Component
 public class EnderecoService extends GenericService<Endereco> {
-
-	@Autowired
-	public void setDao(GenericDAO<Endereco> dao) {
-		super.setDao(dao);
-	}
 
 	@Override
 	public List<Endereco> listar() throws GenericServiceException {
@@ -34,4 +31,20 @@ public class EnderecoService extends GenericService<Endereco> {
 	public Optional<Endereco> buscar(Long id) throws GenericServiceException {
 		return super.buscar(id);
 	}
+
+	@Autowired
+	public void setDao(GenericDAO<Endereco> dao) {
+		super.dao = dao;
+	}
+
+	@Override
+	protected void verificaExistencia(Endereco endereco) throws GenericServiceException {
+		Optional<Endereco> enderecoCadastrado = ((EnderecoDAO) dao)
+				.findEnderecoByLatitudeAndLongitude(endereco.getLatitude(), endereco.getLongitude());
+		
+		if(endereco.getId()!=0 || enderecoCadastrado.isPresent()) {
+			throw new ResourceConflictException();
+		}
+	}
+
 }

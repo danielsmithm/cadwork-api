@@ -10,16 +10,13 @@ import org.springframework.validation.BindingResult;
 import br.com.imd.cadeduc.core.dao.GenericDAO;
 import br.com.imd.cadeduc.core.service.GenericService;
 import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.core.service.exception.ResourceConflictException;
+import br.com.imd.cadeduc.localizacao.dao.MunicipioDAO;
 import br.com.imd.cadeduc.localizacao.domain.Municipio;
 
 @Component
-public class MunicipioService extends GenericService<Municipio>{
+public class MunicipioService extends GenericService<Municipio> {
 
-	@Autowired		
-	public void setDao(GenericDAO<Municipio> dao) {
-		super.setDao(dao);	
-	}
-	
 	@Override
 	public List<Municipio> listar() throws GenericServiceException {
 		return super.listar();
@@ -34,4 +31,21 @@ public class MunicipioService extends GenericService<Municipio>{
 	public Optional<Municipio> buscar(Long id) throws GenericServiceException {
 		return super.buscar(id);
 	}
+
+	@Autowired
+	public void setDao(GenericDAO<Municipio> dao) {
+		super.dao = dao;
+	}
+
+	@Override
+	protected void verificaExistencia(Municipio municipio) throws GenericServiceException {
+		Optional<Municipio> municipioCadastrado = ((MunicipioDAO) dao)
+				.findTop1MunicipioByNomeAndEstado(municipio.getNome(), municipio.getEstado().name());
+		
+		if(municipio.getId()!=0 || municipioCadastrado.isPresent()) {
+			throw new ResourceConflictException();
+		}
+
+	}
+
 }

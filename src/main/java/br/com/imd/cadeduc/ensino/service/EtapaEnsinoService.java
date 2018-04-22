@@ -17,11 +17,6 @@ import br.com.imd.cadeduc.ensino.domain.EtapaEnsino;
 @Component
 public class EtapaEnsinoService extends GenericService<EtapaEnsino> {
 
-	@Autowired
-	public void setDao(GenericDAO<EtapaEnsino> dao) {
-		super.setDao(dao);
-	}
-
 	@Override
 	public List<EtapaEnsino> listar() throws GenericServiceException {
 		return super.listar();
@@ -29,15 +24,24 @@ public class EtapaEnsinoService extends GenericService<EtapaEnsino> {
 
 	@Override
 	public void salvar(EtapaEnsino etapaEnsino, BindingResult resultado) throws GenericServiceException {
-		Optional<EtapaEnsino> etapaCadastrada = ((EtapaEnsinoDAO) dao).findEtapaEnsinoByNome(etapaEnsino.getNome());
-		if(etapaEnsino.getId()!=0 || etapaCadastrada.isPresent()) {
-			throw new ResourceConflictException();
-		}
 		super.salvar(etapaEnsino, resultado);
 	}
 
 	@Override
 	public Optional<EtapaEnsino> buscar(Long id) throws GenericServiceException {
 		return super.buscar(id);
+	}
+
+	@Autowired
+	public void setDao(GenericDAO<EtapaEnsino> dao) {
+		super.dao = dao;
+	}
+
+	@Override
+	protected void verificaExistencia(EtapaEnsino etapaEnsino) throws GenericServiceException {
+		Optional<EtapaEnsino> etapaCadastrada = ((EtapaEnsinoDAO) dao).findEtapaEnsinoByNome(etapaEnsino.getNome());
+		if (etapaEnsino.getId() != 0 || etapaCadastrada.isPresent()) {
+			throw new ResourceConflictException();
+		}
 	}
 }
