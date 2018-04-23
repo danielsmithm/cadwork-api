@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.dao;
+package br.com.imd.cadeduc.core.dao;
 
 public class GerericDomainException extends Exception {
 

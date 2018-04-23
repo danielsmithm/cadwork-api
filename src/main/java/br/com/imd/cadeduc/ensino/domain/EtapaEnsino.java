@@ -46,7 +46,7 @@ public class EtapaEnsino {
 	@ApiModelProperty(notes = "Quantidade de vagas disponíveis", required = true)
 	private int vagasDisponiveis;
 
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@ApiModelProperty(notes = "séries da etapa de ensino")
 	private List<Serie> series;
 
@@ -55,6 +55,10 @@ public class EtapaEnsino {
 	@Enumerated(EnumType.STRING)
 	@ApiModelProperty(notes = "Tipo da etapa de ensino", required = true)
 	private TipoEtapaEnsinoEnum tipoEtapaEnsino;
+
+	public EtapaEnsino() {
+		id = new Long(0);
+	}
 
 	/**
 	 * Método para retorno do id de uma instância de Etapa de Ensino

@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Classe que define o modelo Municipio
  * 
  * @author Miguel
- * @version 0.4
+ * @version 0.5
  */
 
 @Entity
@@ -43,6 +43,12 @@ public class Municipio {
 	@ApiModelProperty(notes = "Estado ao qual o municipio pertence", required = true)
 	private EstadosEnum estado;
 
+	
+	public Municipio() {
+		id = new Long(0);
+	}
+	
+	
 	/**
 	 * Método para retorno do id de uma instância de Municipio
 	 * 

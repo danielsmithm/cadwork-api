@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.config;
+package br.com.imd.cadeduc.core.config;
 
 
 

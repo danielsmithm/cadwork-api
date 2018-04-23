@@ -12,18 +12,23 @@ public class ValidatorUtil {
 	public static String gerarErrorsInJson(List<ObjectError> allErrors) {
 
 		StringBuilder message = new StringBuilder();
-		message.append("Errors:[");
+		message.append("{Errors:[");
 		for (ObjectError error : allErrors) {
 			message.append("{");
-			message.append(error.getDefaultMessage().concat(": " + ((FieldError) error).getField()));
+			message.append(((FieldError) error).getField().concat(": "+ error.getDefaultMessage()));
 			message.append("}");
 			message.append(",");
 		}
 		message.append("]");
 
-		String errors = message.toString().replace("},]", "}]");
+		String errors = message.toString().replace("},]", "}]}");
 
 		return new Gson().toJson(errors);
+	}
+	
+	public static boolean isEmpty(Object o) {
+		//Validar de forma genérica quando um objeto está ou não válido
+		return true;
 	}
 
 }
