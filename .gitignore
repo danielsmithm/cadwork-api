@@ -1,5 +1,6 @@
 target/
 bin/
+*.lock.db
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
