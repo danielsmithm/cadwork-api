@@ -31,7 +31,7 @@ public class EscolaReportController {
 			return "report/index";
 		}
 		
-		model.addAttribute("atribute", this.escolaService.buscar(id).get());
+		model.addAttribute("atribute", this.escolaService.buscar(id).get().getSeries());
 		
 		return "report/index";
 		

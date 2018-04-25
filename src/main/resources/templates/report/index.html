@@ -5,7 +5,7 @@
 	layout:decorator="layout">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Relatório por escolas</title>
 </head>
 <body style="background-color: #aaffaa">
 	<div>
@@ -27,13 +27,11 @@
 			<table>
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Name</th>
+						<th>Séries disponíveis</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="att : ${atribute}">
-						<td th:text="${att.id}"></td>
 						<td th:text="${att.nome}"></td>
 					</tr>
 				</tbody>	
