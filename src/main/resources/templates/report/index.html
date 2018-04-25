@@ -7,18 +7,39 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	Report HTML
+<body style="background-color: #aaffaa">
+	<div>
+		<h2 align="center">Relatório por escolas</h2>
+		<img align="right" size="50" src="https://raw.githubusercontent.com/CADEduc/cadeduc-documentacao/master/CADEduc_Logo/Cadeduc_map.jpeg">
+	</div>
 	<br/>
 	<br/>
 	<th:block layout:fragment="content">
-		<select name="state">
-			<option>Select</option>
-			<option th:each="escola : ${escolas}" th:value="${escola.id}" th:text="${escola.nome}"></option>
-		</select>
-		<form th:action="@{reports/html}" th:method="get">
-			<button type="submit">Generate Report</button>
+		<form th:action="@{html}" th:method="get">
+			<select name="escola">
+				<option>Selecione...</option>
+				<option th:each="escola : ${escolas}" th:value="${escola.id}" th:text="${escola.nome}"></option>
+			</select>
+			<button type="submit">Gerar Relatório</button>
 		</form>
+		
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="att : ${atribute}">
+						<td th:text="${att.id}"></td>
+						<td th:text="${att.nome}"></td>
+					</tr>
+				</tbody>	
+			</table>
+		</div>
+		
 	</th:block>
 </body>
 </html>
