@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.dao;
+package br.com.imd.cadeduc.core.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

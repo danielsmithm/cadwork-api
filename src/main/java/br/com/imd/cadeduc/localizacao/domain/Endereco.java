@@ -80,6 +80,10 @@ public class Endereco {
 	@ApiModelProperty(notes = "Município da instituição ", required = true)
 	private Municipio municipio;
 
+	public Endereco(){
+		id = new Long(0);
+	}
+	
 	/**
 	 * Método para retorno do id de uma instância de Endereco
 	 * 

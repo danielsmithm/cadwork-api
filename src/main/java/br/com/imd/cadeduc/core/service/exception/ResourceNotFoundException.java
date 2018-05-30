@@ -1,9 +1,5 @@
-package br.com.imd.cadeduc.service.exception;
+package br.com.imd.cadeduc.core.service.exception;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-@ResponseStatus(HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends GenericServiceException {
 
 	private static final long serialVersionUID = 1L;

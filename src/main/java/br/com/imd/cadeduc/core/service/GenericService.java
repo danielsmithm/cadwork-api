@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc.service;
+package br.com.imd.cadeduc.core.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,20 +6,16 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import br.com.imd.cadeduc.dao.GenericDAO;
-import br.com.imd.cadeduc.service.exception.GenericServiceException;
-import br.com.imd.cadeduc.service.exception.ResourceEmptyException;
-import br.com.imd.cadeduc.service.exception.ResourceNotFoundException;
+import br.com.imd.cadeduc.core.dao.GenericDAO;
+import br.com.imd.cadeduc.core.service.exception.GenericServiceException;
+import br.com.imd.cadeduc.core.service.exception.ResourceEmptyException;
+import br.com.imd.cadeduc.core.service.exception.ResourceNotFoundException;
 import br.com.imd.cadeduc.util.ValidatorUtil;
 
 @Service
 public abstract class GenericService<T> {
 
 	protected GenericDAO<T> dao;
-
-	public void setDao(GenericDAO<T> dao) {
-		this.dao = dao;
-	}
 
 	protected List<T> listar() throws GenericServiceException {
 		List<T> entidades = dao.findAll();
@@ -31,12 +27,14 @@ public abstract class GenericService<T> {
 		return entidades;
 	}
 
-	public void salvar(T t, BindingResult resultado) throws GenericServiceException {
+	protected void salvar(T t, BindingResult resultado) throws GenericServiceException {
 
 		if (resultado.hasErrors()) {
 			throw new ResourceEmptyException(ValidatorUtil.gerarErrorsInJson(resultado.getAllErrors()));
 		}
+		verificaExistencia(t);
 		try {
+
 			dao.save(t);
 
 		} catch (Exception e) {
@@ -54,5 +52,8 @@ public abstract class GenericService<T> {
 		}
 		return entidade;
 	}
+
+	protected abstract void setDao(GenericDAO<T> dao);
+	protected abstract void verificaExistencia(T t) throws GenericServiceException;
 
 }
