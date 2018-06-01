@@ -9,7 +9,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @ApiIgnore
 @RestController
-public class CadeducResources {
+public class CadworkResources {
 
 	@GetMapping("/")
 	public void paginaInicial(HttpServletResponse response) {
