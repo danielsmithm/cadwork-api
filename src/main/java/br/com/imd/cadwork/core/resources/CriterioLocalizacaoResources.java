@@ -28,6 +28,6 @@ public abstract class CriterioLocalizacaoResources {
 	
 	public abstract List<CriterioLocalizacao> listar();
 	public abstract ResponseEntity<String> salvar(@Valid @RequestBody CriterioLocalizacao criterioLocalizacao, BindingResult resultado);
-	public abstract void setDao(GenericDAO<CriterioLocalizacao> dao);//TEM QUE SER AUTOWIRED
+	public abstract void setDao(GenericDAO<CriterioLocalizacao> dao);
 	
 }

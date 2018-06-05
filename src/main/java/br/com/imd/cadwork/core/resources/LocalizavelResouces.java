@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +28,5 @@ public abstract class LocalizavelResouces {
 	
 	public abstract List<Localizavel> listar();
 	public abstract ResponseEntity<String> salvar(@Valid @RequestBody Localizavel localizavel, BindingResult resultado);
-	public abstract void setDao(GenericDAO<Localizavel> dao);//TEM QUE SER AUTOWIRED
+	public abstract void setDao(GenericDAO<Localizavel> dao);
 }

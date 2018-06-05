@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.localizacao.domain;
+package br.com.imd.cadwork.core.localizacao.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

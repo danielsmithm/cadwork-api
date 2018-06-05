@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.localizacao.service;
+package br.com.imd.cadwork.core.localizacao.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
 import br.com.imd.cadwork.core.dao.GenericDAO;
+import br.com.imd.cadwork.core.localizacao.dao.EnderecoDAO;
+import br.com.imd.cadwork.core.localizacao.domain.Endereco;
 import br.com.imd.cadwork.core.service.GenericService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 import br.com.imd.cadwork.core.service.exception.ResourceConflictException;
-import br.com.imd.cadwork.localizacao.dao.EnderecoDAO;
-import br.com.imd.cadwork.localizacao.domain.Endereco;
 
 @Component
 public class EnderecoService extends GenericService<Endereco> {

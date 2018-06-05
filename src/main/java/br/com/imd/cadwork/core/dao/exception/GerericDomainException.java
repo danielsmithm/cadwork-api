@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.core.dao;
+package br.com.imd.cadwork.core.dao.exception;
 
 public class GerericDomainException extends Exception {
 

@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.localizacao.resources;
+package br.com.imd.cadwork.core.localizacao.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.imd.cadwork.core.localizacao.domain.Endereco;
+import br.com.imd.cadwork.core.localizacao.service.EnderecoService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
-import br.com.imd.cadwork.localizacao.domain.Endereco;
-import br.com.imd.cadwork.localizacao.service.EnderecoService;
 import io.swagger.annotations.Api;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
