@@ -11,7 +11,7 @@ import br.com.imd.cadwork.core.model.Localizavel;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 
 /**
- * 
+ * Classe abstrata para o service do Localizavel
  * @author Igor Barbosa Nogueira
  * @version 0.1
  */

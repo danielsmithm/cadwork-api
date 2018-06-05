@@ -10,6 +10,12 @@ import br.com.imd.cadwork.core.dao.GenericDAO;
 import br.com.imd.cadwork.core.model.CriterioLocalizacao;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 
+/**
+ * Classe abstrata para o service do critério de localização
+ * @author Igor Barbosa Nogueira
+ * @version 0.1
+ */
+
 public abstract class CriterioLocalizacaoService extends GenericService<CriterioLocalizacao> {
 
 	@Override

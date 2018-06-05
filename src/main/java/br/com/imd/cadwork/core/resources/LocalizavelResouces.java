@@ -16,6 +16,12 @@ import br.com.imd.cadwork.core.model.Localizavel;
 import br.com.imd.cadwork.core.service.LocalizavelService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 
+/**
+ * Resource abstrato do Localizavel
+ * @author igor
+ *
+ */
+
 public abstract class LocalizavelResouces {
 
 	protected LocalizavelService localizavelService;
