@@ -17,6 +17,11 @@ import br.com.imd.cadwork.core.model.CriterioLocalizacao;
 import br.com.imd.cadwork.core.service.CriterioLocalizacaoService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 
+/**
+ * Resource abstrato do criterio de localização
+ * @author  Igor Barbosa Nogueira
+ */
+
 public abstract class CriterioLocalizacaoResources {
 
 	protected CriterioLocalizacaoService criterioLocalizacaoService;

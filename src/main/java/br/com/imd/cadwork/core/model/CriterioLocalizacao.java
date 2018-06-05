@@ -1,9 +1,8 @@
-/**
- * 
- */
 package br.com.imd.cadwork.core.model;
 
 /**
+ * Interface para criação dos critérios 
+ * 
  * @author Igor Barbosa Nogueira
  * @version 0.1
  */
