@@ -8,10 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.AnyMetaDef;
+import org.hibernate.annotations.MetaValue;
+
 import br.com.imd.cadwork.core.localizacao.domain.Endereco;
+import io.swagger.models.properties.IntegerProperty;
 
 /**
  * Classe abstrata para ser base do modelo do item localizavel
@@ -32,7 +38,12 @@ public abstract class Localizavel {
 	@Column
 	protected String nome;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@Any(metaColumn = @Column(name = "ITEM_TYPE"))
+    @AnyMetaDef(idType = "long", metaType = "string", 
+            metaValues = { 
+            		@MetaValue( value = "I", targetEntity = IntegerProperty.class )
+       })
+	@JoinColumn(name="criterio_localizacao")
 	protected CriterioLocalizacao criterioLocalizacao;
 
 	@OneToOne(cascade = CascadeType.ALL)
