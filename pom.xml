@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -10,13 +11,40 @@
 
 	<name>cadeducapi</name>
 	<description>API de geocalização de escolas estaduais</description>
-
+	<url>https://github.com/CADEduc/cadwork-api</url>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
+	<scm>
+		<connection>scm:git:https://github.com/CADEduc/cadwork-api.git</connection>
+		<developerConnection>scm:git:https://github.com/CADEduc/cadwork-api.git </developerConnection>
+		<url>https://github.com/CADEduc/cadwork-api.git</url>
+	</scm>
+
+	<licenses>
+		<license>
+			<name>GNU General Public License 3.0</name>
+			<url>https://www.gnu.org/licenses/gpl.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>i-am-miguel</id>
+			<name>Miguel</name>
+			<email>miguelwelligton@gmail.com</email>
+			<roles>
+				<role>project owner</role>
+				<role>administrator</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-3</timezone>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,13 +66,13 @@
 		</dependency>
 
 		<!-- UTILS -->
-			<!-- GSON -->
-	
-			<dependency>
-				<groupId>com.google.code.gson</groupId>
-				<artifactId>gson</artifactId>
-			</dependency>
-			
+		<!-- GSON -->
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
 
 		<!-- Modelagem JPA -->
 		<dependency>
@@ -91,6 +119,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<pushChanges>false</pushChanges>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
