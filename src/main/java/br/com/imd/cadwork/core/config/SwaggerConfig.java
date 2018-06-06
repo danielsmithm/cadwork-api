@@ -34,7 +34,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
 	
 	/**
 	 * Função central que constroi a documentação
-	 * @return
+	 * @return Docket - Retorna a documenta;'ao Swagger
 	 */
 	@Bean
     public Docket api() { 

@@ -88,7 +88,7 @@ public class ResponseMessagesConfig {
 	
 	/**
 	 * Função que retorna as mensagens das requisições
-	 * @return List<ResponseMessage> - Mensagens padrões das requisições
+	 * @return ArrayList<ResponseMessage> - Mensagens padrões das requisições
 	 */
 	public ArrayList<ResponseMessage> listaMensagens() {	
 		
