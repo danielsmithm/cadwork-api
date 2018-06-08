@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.localizacao.dao;
+package br.com.imd.cadwork.core.localizacao.dao;
 
 import java.util.Optional;
 
@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.imd.cadwork.core.dao.GenericDAO;
-import br.com.imd.cadwork.localizacao.domain.Endereco;
+import br.com.imd.cadwork.core.localizacao.domain.Endereco;
 
 @Repository
 public interface EnderecoDAO extends GenericDAO<Endereco> {

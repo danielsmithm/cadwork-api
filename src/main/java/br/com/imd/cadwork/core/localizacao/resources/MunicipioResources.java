@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.localizacao.resources;
+package br.com.imd.cadwork.core.localizacao.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.imd.cadwork.core.localizacao.domain.Municipio;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
-import br.com.imd.cadwork.localizacao.domain.Municipio;
 import br.com.imd.cadwork.localizacao.service.MunicipioService;
 import io.swagger.annotations.Api;
 

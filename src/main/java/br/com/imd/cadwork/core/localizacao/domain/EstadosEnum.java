@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.localizacao.domain;
+package br.com.imd.cadwork.core.localizacao.domain;
 
 import io.swagger.annotations.ApiModel;
 

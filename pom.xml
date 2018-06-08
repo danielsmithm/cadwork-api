@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.imd.cadeduc</groupId>
-	<artifactId>cadeduc</artifactId>
+	<groupId>br.com.imd.cadwork</groupId>
+	<artifactId>cadwork</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>cadeducapi</name>
-	<description>API de geocalização de escolas estaduais</description>
+	<name>cadworkapi</name>
+	<description>API de geocalização de Recursos</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
