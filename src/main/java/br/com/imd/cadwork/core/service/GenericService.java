@@ -18,8 +18,13 @@ public abstract class GenericService<T> {
 	protected GenericDAO<T> dao;
 
 	protected List<T> listar() throws GenericServiceException {
-		return Optional.ofNullable(dao.findAll())
-				.orElseThrow(ResourceNotFoundException::new);
+		List<T> entidades = dao.findAll();
+		
+		entidades.stream()
+		.findAny()
+		.orElseThrow(ResourceNotFoundException::new);
+		
+		return entidades;
 	}
 
 	protected void salvar(T t, BindingResult resultado) throws GenericServiceException {
@@ -28,6 +33,7 @@ public abstract class GenericService<T> {
 			throw new ResourceEmptyException(ValidatorUtil.gerarErrorsInJson(resultado.getAllErrors()));
 		}
 		verificaExistencia(t);
+		
 		try {
 
 			dao.save(t);
@@ -39,9 +45,9 @@ public abstract class GenericService<T> {
 	}
 
 	protected Optional<T> buscar(Long id) throws GenericServiceException {
-
-		return Optional.ofNullable(dao.findById(id))
-				.orElseThrow(ResourceNotFoundException::new);
+		T entidade = dao.findById(id).orElseThrow(ResourceNotFoundException::new);
+		
+		return Optional.of(entidade);
 	}
 
 	protected abstract void setDao(GenericDAO<T> dao);

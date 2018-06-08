@@ -39,12 +39,11 @@ public class EnderecoService extends GenericService<Endereco> {
 
 	@Override
 	protected void verificaExistencia(Endereco endereco) throws GenericServiceException {
-		Optional<Endereco> enderecoCadastrado = ((EnderecoDAO) dao)
-				.findEnderecoByLatitudeAndLongitude(endereco.getLatitude(), endereco.getLongitude());
-		
-		if(endereco.getId()!=0 || enderecoCadastrado.isPresent()) {
-			throw new ResourceConflictException();
-		}
+		((EnderecoDAO) dao).
+				findEnderecoByLatitudeAndLongitude(
+													endereco.getLatitude(),
+													endereco.getLongitude()
+				).orElseThrow(ResourceConflictException::new);
 	}
 
 }

@@ -39,12 +39,12 @@ public class MunicipioService extends GenericService<Municipio> {
 
 	@Override
 	protected void verificaExistencia(Municipio municipio) throws GenericServiceException {
-		Optional<Municipio> municipioCadastrado = ((MunicipioDAO) dao)
-				.findTop1MunicipioByNomeAndEstado(municipio.getNome(), municipio.getEstado().name());
+		((MunicipioDAO) dao)
+				.findTop1MunicipioByNomeAndEstado(
+												municipio.getNome(), 
+												municipio.getEstado().name()
+				).orElseThrow(ResourceConflictException::new);
 		
-		if(municipio.getId()!=0 || municipioCadastrado.isPresent()) {
-			throw new ResourceConflictException();
-		}
 
 	}
 
