@@ -1,4 +1,4 @@
-package br.com.imd.cadeduc;
+package br.com.imd.cadwork;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CadeducapiApplicationTests {
+public class CadworkapiApplicationTests {
 
 	@Test
 	public void contextLoads() {

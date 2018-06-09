@@ -1,7 +1,5 @@
 package br.com.imd.cadwork.core.config;
 
-
-
 import java.time.LocalDate;
 import java.util.Collections;
 
@@ -9,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
@@ -46,11 +43,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
           .pathMapping("/")
           .directModelSubstitute(LocalDate.class, String.class)
           .genericModelSubstitutes(ResponseEntity.class)
-          .useDefaultResponseMessages(false)
-          .globalResponseMessage(RequestMethod.GET,
-        		  ResponseMessagesConfig.getInstance().listaMensagens())
-          .globalResponseMessage(RequestMethod.POST,
-        		  ResponseMessagesConfig.getInstance().listaMensagens())
+          .useDefaultResponseMessages(true)
           .apiInfo(metaData());
 
     }
@@ -61,11 +54,11 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
 	 */
 	private ApiInfo metaData() {
         ApiInfo apiInfo = new ApiInfo(
-                "CADEduc",
-                "Spring Boot REST API para Geocalização de escolas",
+                "CADWork",
+                "Spring Boot REST API para Geocalização de recursos",
                 "1.0",
                 "Termos e Serviço",
-                new Contact("CADEduc", "https://cadeduc.imd.com.br/about/", "miguelwelligton@gmail.com"),
+                new Contact("CADEduc", "https://cadwork.imd.com.br/about/", "miguelwelligton@gmail.com"),
                "GNU General Public License 3.0",
                 "https://www.gnu.org/licenses/gpl.txt", Collections.emptyList());
         return apiInfo;
