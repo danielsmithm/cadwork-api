@@ -22,7 +22,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Classe qe define as configurações da documentação Swagger
+ * Classe que define as configurações da documentação Swagger
  * 
  * @author miguel
  * @version 0.2
@@ -34,7 +34,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
 	
 	/**
 	 * Função central que constroi a documentação
-	 * @return
+	 * @return Docket
 	 */
 	@Bean
     public Docket api() { 

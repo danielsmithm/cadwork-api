@@ -24,7 +24,9 @@ public class ResponseMessagesConfig {
 	private static ResponseMessagesConfig instancia;
 	private static Map<Integer, ResponseMessage> mensagens;
 	
-
+	/**
+	 * Procedimento de inicialização das mensagens padrões
+	 */
 	private ResponseMessagesConfig() {
 		mensagens = new HashMap<>();
 		mensagensPadroes();
