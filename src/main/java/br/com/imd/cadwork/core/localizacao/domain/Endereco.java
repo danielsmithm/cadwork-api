@@ -80,6 +80,10 @@ public class Endereco {
 	@ApiModelProperty(notes = "Município da instituição ", required = true)
 	private Municipio municipio;
 
+	/**
+	 * Construtor da classe Endereço
+	 */
+	
 	public Endereco(){
 		id = new Long(0);
 	}

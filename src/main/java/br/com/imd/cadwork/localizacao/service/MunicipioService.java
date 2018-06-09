@@ -13,30 +13,44 @@ import br.com.imd.cadwork.core.localizacao.domain.Municipio;
 import br.com.imd.cadwork.core.service.GenericService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 import br.com.imd.cadwork.core.service.exception.ResourceConflictException;
-
+/**
+ * Service para objetos da classe Endereco
+ * @author Welligton Miguel
+ *
+ */
 @Component
 public class MunicipioService extends GenericService<Municipio> {
-
+	/**
+	 * {@inheritDoc}}
+	 */
 	@Override
 	public List<Municipio> listar() throws GenericServiceException {
 		return super.listar();
 	}
-
+	/**
+	 * {@inheritDoc}}
+	 */
 	@Override
 	public void salvar(Municipio municipio, BindingResult resultado) throws GenericServiceException {
 		super.salvar(municipio, resultado);
 	}
-
+	/**
+	 * {@inheritDoc}}
+	 */
 	@Override
 	public Optional<Municipio> buscar(Long id) throws GenericServiceException {
 		return super.buscar(id);
 	}
-
+	/**
+	 * {@inheritDoc}}
+	 */
 	@Autowired
 	public void setDao(GenericDAO<Municipio> dao) {
 		super.dao = dao;
 	}
-
+	/**
+	 * {@inheritDoc}}
+	 */
 	@Override
 	protected void verificaExistencia(Municipio municipio) throws GenericServiceException {
 		((MunicipioDAO) dao)
@@ -45,7 +59,6 @@ public class MunicipioService extends GenericService<Municipio> {
 												municipio.getEstado().name()
 				).orElseThrow(ResourceConflictException::new);
 		
-
 	}
 
 }

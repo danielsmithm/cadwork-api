@@ -20,7 +20,11 @@ import br.com.imd.cadwork.core.localizacao.domain.Municipio;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 import br.com.imd.cadwork.localizacao.service.MunicipioService;
 import io.swagger.annotations.Api;
-
+/**
+ * Classe que faz o controle dos endpoints da API com os dados de municipios
+ * @author Welligton Miguel
+ *
+ */
 @RestController
 @RequestMapping(value = "/municipios", produces = "application/json")
 @Api(tags = "Municípios", value = "onlinestore", description = "Operações pertinentes a municípios")
@@ -28,13 +32,24 @@ public class MunicipioResources {
 
 	@Autowired
 	MunicipioService municipioService;
-
+	/**
+	 * Retorna todos os municipios da API
+	 * @return List<Municipio> - todos os municipios da API
+	 * @throws GenericServiceException
+	 */
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Municipio> listar() throws GenericServiceException {
 		return municipioService.listar();
 
 	}
-
+	/**
+	 * Função para adicionar municipio na API 
+	 * @param municipio Municipio - municipio para ser adicionado na API 
+	 * @param resultado BindingResult
+	 * @return ResponseEntity<String>
+	 * @throws GenericServiceException
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> salvar(@Valid @RequestBody Municipio municipio, BindingResult resultado) throws GenericServiceException {
 		municipioService.salvar(municipio, resultado);
@@ -44,7 +59,12 @@ public class MunicipioResources {
 		return ResponseEntity.created(uri).build();
 
 	}
-
+	/**
+	 * Retorna municipio associado a um determinado id
+	 * @param id Long - id para retornar municipio associado
+	 * @return Optional<Municipio> - caso o id seja válido retorna um muninipio
+	 * @throws GenericServiceException
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Optional<Municipio> buscar(@PathVariable("id") Long id) throws GenericServiceException {
 		return municipioService.buscar(id);
