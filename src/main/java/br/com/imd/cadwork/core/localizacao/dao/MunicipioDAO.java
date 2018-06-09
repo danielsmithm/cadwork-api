@@ -14,13 +14,13 @@ import br.com.imd.cadwork.core.localizacao.domain.Municipio;
  */
 @Repository
 public interface MunicipioDAO extends GenericDAO<Municipio> {
+	
 	/**
 	 * Retorna um único municipio para o nome e estado passados
 	 * @param nome String - nome do municipio a ser pesquisado
 	 * @param estado String - estado ao qual o municipio pertence
-	 * @return Optional<Municipio> - optional de um municipio
+	 * @return Optional<{@link br.com.imd.cadwork.core.localizacao.domain.Municipio}> - optional de um municipio
 	 */
-	
 	@Query(value="SELECT * FROM localizacao.municipio m WHERE m.nome = :nome and m.estado = :#{#estado} LIMIT 1", nativeQuery = true)
 	Optional<Municipio> findTop1MunicipioByNomeAndEstado(@Param("nome")String nome, @Param("estado") String estado);
 

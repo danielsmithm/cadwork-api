@@ -32,12 +32,12 @@ public class MunicipioResources {
 
 	@Autowired
 	MunicipioService municipioService;
+
 	/**
 	 * Retorna todos os municipios da API
-	 * @return List<Municipio> - todos os municipios da API
+	 * @return List<{@link br.com.imd.cadwork.core.localizacao.domain.Municipio}> - todos os municipios da API
 	 * @throws GenericServiceException
 	 */
-	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Municipio> listar() throws GenericServiceException {
 		return municipioService.listar();
@@ -47,7 +47,7 @@ public class MunicipioResources {
 	 * Função para adicionar municipio na API 
 	 * @param municipio Municipio - municipio para ser adicionado na API 
 	 * @param resultado BindingResult
-	 * @return ResponseEntity<String>
+	 * @return ResponseEntity<{@link java.lang.String}>
 	 * @throws GenericServiceException
 	 */
 	@RequestMapping(method = RequestMethod.POST)
@@ -62,7 +62,7 @@ public class MunicipioResources {
 	/**
 	 * Retorna municipio associado a um determinado id
 	 * @param id Long - id para retornar municipio associado
-	 * @return Optional<Municipio> - caso o id seja válido retorna um muninipio
+	 * @return Optional<{@link br.com.imd.cadwork.core.localizacao.domain.Municipio}> - caso o id seja válido retorna um muninipio
 	 * @throws GenericServiceException
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

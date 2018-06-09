@@ -69,7 +69,6 @@ public abstract class Localizavel {
 	 * @param id
 	 *            Long - Novo valor do id
 	 */
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -94,7 +93,8 @@ public abstract class Localizavel {
 	}
 
 	/**
-	 * Método que valida o localizavel
+	 * Método que será implentado pelas classes filhas com finalidade
+	 *  de validar a existência do localizável
 	 * 
 	 * @return boolean - Se o localizavel é válido ou não
 	 */

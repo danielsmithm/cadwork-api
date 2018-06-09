@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiModel;
  * @version 0.2
  *
  */
-
 @ApiModel
 public enum TipoLocalizacaoEnum {
 	
