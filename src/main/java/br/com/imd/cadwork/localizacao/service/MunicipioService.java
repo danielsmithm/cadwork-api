@@ -48,17 +48,16 @@ public class MunicipioService extends GenericService<Municipio> {
 	public void setDao(GenericDAO<Municipio> dao) {
 		super.dao = dao;
 	}
+
 	/**
 	 * {@inheritDoc}}
 	 */
 	@Override
 	protected void verificaExistencia(Municipio municipio) throws GenericServiceException {
-		((MunicipioDAO) dao)
-				.findTop1MunicipioByNomeAndEstado(
-												municipio.getNome(), 
-												municipio.getEstado().name()
-				).orElseThrow(ResourceConflictException::new);
-		
+		if (((MunicipioDAO) dao).findTop1MunicipioByNomeAndEstado(	municipio.getNome(), 
+																	municipio.getEstado().name()).isPresent()) {
+			throw new ResourceConflictException();
+		}
 	}
 
 }

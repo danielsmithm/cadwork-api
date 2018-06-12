@@ -55,11 +55,13 @@ public class EnderecoService extends GenericService<Endereco> {
 	 */
 	@Override
 	protected void verificaExistencia(Endereco endereco) throws GenericServiceException {
-		((EnderecoDAO) dao).
+		if (((EnderecoDAO) dao).
 				findEnderecoByLatitudeAndLongitude(
 													endereco.getLatitude(),
 													endereco.getLongitude()
-				).orElseThrow(ResourceConflictException::new);
+																			).isPresent()){
+			throw new ResourceConflictException();
+		}
 	}
 
 }
