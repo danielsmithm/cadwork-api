@@ -12,13 +12,5 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @SpringBootApplication
 public class CadworkapiApplication {
-	/**
-	 * Função main do framework responsável por inicializar a aplicação 
-	 * 
-	 * @param args String - argumentos passados na inicialização do programa
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(CadworkapiApplication.class, args);
-	}
 }
 

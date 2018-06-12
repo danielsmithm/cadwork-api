@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import springfox.documentation.builders.PathSelectors;
@@ -37,7 +38,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
           .select()
-	          .apis(RequestHandlerSelectors.basePackage("br.com.imd.cadwork"))
+	          .apis(RequestHandlerSelectors.basePackage("br.com.imd"))
 	          .paths(PathSelectors.any())
 	          .build()
           .pathMapping("/")
@@ -75,6 +76,14 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
 
 		registry.addResourceHandler("/webjars/**")
         .addResourceLocations("classpath:/META-INF/resources/webjars/");
+	}
+	
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+	    registry.addRedirectViewController("/null/v2/api-docs", "/v2/api-docs");
+	    registry.addRedirectViewController("/null/swagger-resources/configuration/ui", "/swagger-resources/configuration/ui");
+	    registry.addRedirectViewController("/null/swagger-resources/configuration/security", "/swagger-resources/configuration/security");
+	    registry.addRedirectViewController("/null/swagger-resources", "/swagger-resources");
 	}
 
 }
