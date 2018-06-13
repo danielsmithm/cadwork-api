@@ -10,6 +10,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import br.com.imd.cadwork.core.localizacao.domain.Endereco;
 
@@ -29,10 +30,12 @@ public abstract class Localizavel {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 
+	@NotNull
 	@Column
 	protected String nome;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@NotNull
+	@OneToOne(cascade = CascadeType.REFRESH)
 	protected Endereco endereco;
 
 	/**

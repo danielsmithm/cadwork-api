@@ -61,12 +61,12 @@ public class Endereco {
 	@NotNull(message = "Campo nulo")
 	@ApiModelProperty(notes = "Latitude da Instituição", required = true)
 	@Column(nullable = true)
-	private double latitude;
+	private Double latitude;
 
 	@NotNull(message = "Campo nulo")
 	@ApiModelProperty(notes = "Longitude da Instituição", required = true)
 	@Column(nullable = true)
-	private double longitude;
+	private Double longitude;
 
 	@NotNull(message = "Campo nulo")
 	@Column(name = "tipo_localizacao")
@@ -207,7 +207,7 @@ public class Endereco {
 	 * 
 	 * @return double - latitude de um endereço
 	 */
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
@@ -217,7 +217,7 @@ public class Endereco {
 	 * @param latitude
 	 *            double - nova latitude de um endereço
 	 */
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
