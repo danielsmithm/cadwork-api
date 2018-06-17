@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.localizacao.service;
+package br.com.imd.cadwork.core.localizacao.service;
 
 import java.util.List;
 import java.util.Optional;

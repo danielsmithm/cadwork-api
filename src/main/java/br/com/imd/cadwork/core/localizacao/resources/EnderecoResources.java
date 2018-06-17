@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.imd.cadwork.core.localizacao.domain.Endereco;
+import br.com.imd.cadwork.core.localizacao.service.EnderecoService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
-import br.com.imd.cadwork.localizacao.service.EnderecoService;
 import io.swagger.annotations.Api;
 
 /**
@@ -70,5 +70,4 @@ public class EnderecoResources {
 	public Optional<Endereco> buscar(@PathVariable("id") Long id) throws GenericServiceException {
 		return enderecoService.buscar(id);
 	}
-
 }

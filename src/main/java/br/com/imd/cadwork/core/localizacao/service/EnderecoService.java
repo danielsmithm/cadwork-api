@@ -1,4 +1,4 @@
-package br.com.imd.cadwork.localizacao.service;
+package br.com.imd.cadwork.core.localizacao.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,13 +55,20 @@ public class EnderecoService extends GenericService<Endereco> {
 	 */
 	@Override
 	protected void verificaExistencia(Endereco endereco) throws GenericServiceException {
-		if (((EnderecoDAO) dao).
-				findEnderecoByLatitudeAndLongitude(
-													endereco.getLatitude(),
-													endereco.getLongitude()
-																			).isPresent()){
+		if (buscaEnderecosLatLng(endereco.getLatitude(),endereco.getLongitude()).isPresent()){
 			throw new ResourceConflictException();
 		}
+	}
+
+	/**
+	 * Função que busca um endereço baseado na latitude e longitude
+	 * @param lat
+	 * @param lng
+	 * @return Optional<Endereco> - retorna o endereço caso exista
+	 */
+	public Optional<Endereco> buscaEnderecosLatLng(Double lat, Double lng){
+		return ((EnderecoDAO) dao).findEnderecoByLatitudeAndLongitude(lat,lng);
+												
 	}
 
 }

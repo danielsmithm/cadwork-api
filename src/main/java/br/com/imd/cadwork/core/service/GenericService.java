@@ -3,6 +3,7 @@ package br.com.imd.cadwork.core.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
@@ -23,6 +24,9 @@ import br.com.imd.cadwork.util.ValidatorUtil;
 public abstract class GenericService<T> {
 
 	protected GenericDAO<T> dao;
+	
+	@Autowired
+	protected GoogleService googleService;
 
 	/**
 	 * Retorna uma lista de objetos

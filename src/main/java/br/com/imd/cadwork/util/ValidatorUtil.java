@@ -38,4 +38,5 @@ public class ValidatorUtil {
 		//Validar de forma genérica quando um objeto está ou não válido
 		return true;
 	}
+
 }

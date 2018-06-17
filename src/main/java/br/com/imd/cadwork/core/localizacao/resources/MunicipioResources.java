@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.imd.cadwork.core.localizacao.domain.Municipio;
+import br.com.imd.cadwork.core.localizacao.service.MunicipioService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
-import br.com.imd.cadwork.localizacao.service.MunicipioService;
 import io.swagger.annotations.Api;
 /**
  * Classe que faz o controle dos endpoints da API com os dados de municipios

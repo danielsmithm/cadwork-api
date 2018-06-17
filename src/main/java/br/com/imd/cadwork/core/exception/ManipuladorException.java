@@ -13,6 +13,7 @@ import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 import br.com.imd.cadwork.core.service.exception.ResourceConflictException;
 import br.com.imd.cadwork.core.service.exception.ResourceEmptyException;
 import br.com.imd.cadwork.core.service.exception.ResourceNotFoundException;
+import br.com.imd.cadwork.util.exception.ConvertLocalizavelException;
 
 /**
  * Handler que atua entre as classes de exceções
@@ -69,6 +70,21 @@ public class ManipuladorException {
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
 	}
 
+	/**
+	 * Captura a exceção lançada do tipo {@link br.com.imd.cadwork.util.exception.ConvertLocalizavelException} 
+	 * @param e Exceção lançada
+	 * @param request Requisição que causou a exceção
+	 * @return ResponseEntity<{@link br.com.imd.cadwork.core.config.DetalheError}> - 
+	 * Response com a mensagem correspondente a exceção
+	 */
+	@ExceptionHandler(ConvertLocalizavelException.class)
+	public ResponseEntity<DetalheError> manipuladorResourceConvertLocalizavelException(GenericServiceException e,
+			HttpServletRequest request) {
+
+		DetalheError error = gerarMensagemError(HttpStatus.INTERNAL_SERVER_ERROR, e);
+
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+	}
 	/**
 	 * Procedimento que dada uma exceção juntamente com o status da mensagem pertencente ao protocolo http,
 	 * formata uma mensagem padrão de resposta ao usuário
