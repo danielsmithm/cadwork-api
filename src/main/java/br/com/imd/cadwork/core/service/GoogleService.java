@@ -17,7 +17,7 @@ import se.walkercrou.places.Place;
 public class GoogleService {
 
 	public static final String KEY = "AIzaSyD5SoFyhcb2eNCBW4PFwpt56BwMXWGDbHc";
-	public static final int RAIO_BUSCA = 50000;
+	public static final int RAIO_BUSCA = 500;
 	public static final int LIMITE_BUSCA = 20;
 	
 	public static final String ESCOLA = "escola";
