@@ -22,6 +22,7 @@ public class GoogleService {
 	public static final int BUSCA_INDIVIDUAL = 1;
 	
 	public static final String ESCOLA = "escola";
+	public static final String PARADA = "bus";
 	
 	private GooglePlaces cliente;
 
