@@ -19,6 +19,7 @@ public class GoogleService {
 	public static final String KEY = "AIzaSyD5SoFyhcb2eNCBW4PFwpt56BwMXWGDbHc";
 	public static final int RAIO_BUSCA = 500;
 	public static final int LIMITE_BUSCA = 20;
+	public static final int BUSCA_INDIVIDUAL = 1;
 	
 	public static final String ESCOLA = "escola";
 	
@@ -40,7 +41,7 @@ public class GoogleService {
 	public List<Map<String, Object>> getLocalizavelByLatLng(Double lat, Double lng,Param... extraParams) 
 			throws GenericServiceException, ConvertLocalizavelException {
 
-		return getLocalizaveisProximos(lat,lng,RAIO_BUSCA,1,extraParams);
+		return getLocalizaveisProximos(lat,lng,RAIO_BUSCA,BUSCA_INDIVIDUAL,extraParams);
 	}	
 	
 	/**
@@ -87,5 +88,24 @@ public class GoogleService {
 
 	public void setCliente(GooglePlaces cliente) {
 		this.cliente = cliente;
+	}
+
+	public boolean validaExistencia(Double lat, Double lng, String cep,String tipoInstituicao) {
+		Param param = new Param("keyword");
+		param.value(tipoInstituicao);
+		try {
+
+			return cliente.getNearbyPlacesRankedByDistance(lat, 
+														   lng, 
+														   BUSCA_INDIVIDUAL, 
+														   param
+														   )
+			.stream()
+			.findFirst()
+			.isPresent();
+
+		}catch (Exception e) {
+			return false;
+		}
 	}
 }

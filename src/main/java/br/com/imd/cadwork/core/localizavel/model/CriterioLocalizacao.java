@@ -1,12 +1,14 @@
 package br.com.imd.cadwork.core.localizavel.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import br.com.imd.cadwork.core.dao.GenericDomainException;
 
@@ -16,8 +18,8 @@ import br.com.imd.cadwork.core.dao.GenericDomainException;
  * @author Miguel
  * @version 0.1
  */
-@MappedSuperclass
-@Table(name = "localizavel", schema = "criterio")
+@Entity
+@Table(name = "criterio", schema = "criterio")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class CriterioLocalizacao {
 
@@ -25,8 +27,12 @@ public abstract class CriterioLocalizacao {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 	
+	@NotNull
+	@Column
+	protected String nome;
+
 	/**
-	 * Método para retorno do id de uma instância do critério
+	 * Método para retorno do id de uma instância de Etapa de Ensino
 	 * 
 	 * @return Long - Valor do id
 	 */
@@ -35,7 +41,7 @@ public abstract class CriterioLocalizacao {
 	}
 
 	/**
-	 * Altera o valor do id de uma instância do critério
+	 * Altera o valor do id de uma instância de Etapa de Ensino
 	 * 
 	 * @param id
 	 *            Long - Novo valor do id
@@ -44,11 +50,29 @@ public abstract class CriterioLocalizacao {
 		this.id = id;
 	}
 
+	/**
+	 * Retorna o nome da etapa de ensino
+	 * 
+	 * @return String - Nome da etapa de ensino
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * Altera o nome da etapa de ensino
+	 * 
+	 * @param nome
+	 *            String - Novo nome da etapa de ensino
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	/**
 	 * Método que será implementado pelas classes filhas com finalidade de limitar os possíveis
 	 * itens localizáveis
 	 * @throws GenericDomainException
 	 */
-	protected abstract void validaCriterios() throws GenericDomainException;
+	public abstract void validaCriterios() throws GenericDomainException;
 }
