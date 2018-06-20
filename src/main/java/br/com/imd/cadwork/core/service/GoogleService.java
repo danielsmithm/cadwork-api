@@ -91,7 +91,7 @@ public class GoogleService {
 		this.cliente = cliente;
 	}
 
-	public boolean validaExistencia(Double lat, Double lng, String cep,String tipoInstituicao) {
+	public boolean validaExistencia(Double lat, Double lng,String tipoInstituicao) {
 		Param param = new Param("keyword");
 		param.value(tipoInstituicao);
 		try {
