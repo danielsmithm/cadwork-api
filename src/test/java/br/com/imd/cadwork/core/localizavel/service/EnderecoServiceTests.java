@@ -1,5 +1,6 @@
-package br.com.imd.cadwork;
+package br.com.imd.cadwork.core.localizavel.service;
 
+import br.com.imd.cadwork.CadworkapiApplication;
 import br.com.imd.cadwork.core.localizacao.domain.Endereco;
 import br.com.imd.cadwork.core.localizacao.domain.EstadosEnum;
 import br.com.imd.cadwork.core.localizacao.domain.Municipio;
