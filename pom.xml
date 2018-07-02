@@ -82,6 +82,15 @@
 			<version>2.1.2</version>
 		</dependency>
 
+		<!-- INTEGRATION TESTS -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<version>1.5.3.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
