@@ -5,6 +5,7 @@ import br.com.imd.cadwork.core.localizacao.domain.EstadosEnum;
 import br.com.imd.cadwork.core.localizacao.domain.Municipio;
 import br.com.imd.cadwork.core.localizacao.service.MunicipioService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
+import br.com.imd.cadwork.core.service.exception.ResourceEmptyException;
 import br.com.imd.cadwork.core.service.exception.ResourceNotFoundException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,8 +37,8 @@ public class MunicipioServiceTests {
 
         Municipio municipio = new Municipio();
 
-        municipio.setNome("Natal");
-        municipio.setEstado(EstadosEnum.TOCANTINS);
+        municipio.setNome("NATESTES");
+        municipio.setEstado(EstadosEnum.RIO_DE_JANEIRO);
 
         BindingResult bindingResultMock = Mockito.mock(BindingResult.class);
         Mockito.when(bindingResultMock.hasErrors()).thenReturn(false);
@@ -47,12 +48,12 @@ public class MunicipioServiceTests {
         Assert.assertFalse(municipioService.listar().isEmpty());
     }
 
-    @Test(expected = ResourceNotFoundException.class)
+    @Test(expected = ResourceEmptyException.class)
     public void testSalvarMunicipio_ComErrosNoCadastro() throws GenericServiceException {
 
         Municipio municipio = new Municipio();
 
-        municipio.setNome("Natalondon");
+        municipio.setNome("Natal");
         municipio.setEstado(EstadosEnum.TOCANTINS);
 
         BindingResult bindingResultMock = Mockito.mock(BindingResult.class);

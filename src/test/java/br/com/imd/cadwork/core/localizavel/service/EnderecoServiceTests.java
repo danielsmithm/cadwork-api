@@ -8,8 +8,10 @@ import br.com.imd.cadwork.core.localizacao.domain.TipoLocalizacaoEnum;
 import br.com.imd.cadwork.core.localizacao.service.EnderecoService;
 import br.com.imd.cadwork.core.localizacao.service.MunicipioService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
+import br.com.imd.cadwork.core.service.exception.ResourceConflictException;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -47,19 +49,21 @@ public class EnderecoServiceTests {
 
     @Before
     public void insereMunicipio() throws GenericServiceException {
-        Municipio municipio = new Municipio();
+        try {
+            Municipio municipio = new Municipio();
 
-        municipio.setNome("Natal");
-        municipio.setEstado(EstadosEnum.TOCANTINS);
+            municipio.setNome("TESTESTESTESTES");
+            municipio.setEstado(EstadosEnum.TOCANTINS);
 
-        municipioService.salvar(municipio,bindingResultMock);
+            municipioService.salvar(municipio, bindingResultMock);
+        }catch(ResourceConflictException ex){
+
+        }
 
     }
 
     @Test
     public void testSalvarEndereco() throws GenericServiceException {
-
-        List<Municipio> listar = municipioService.listar();
 
         Endereco endereco = new Endereco();
         endereco.setBairro("Teste");
@@ -70,10 +74,7 @@ public class EnderecoServiceTests {
         endereco.setLogradouro("Teste");
         endereco.setTipoLocalizacao(TipoLocalizacaoEnum.Urbana);
         endereco.setNumero("467");
-
-        Mockito.when(municipio.getId()).thenReturn(1l);
-
-        endereco.setMunicipio(municipio);
+        endereco.setMunicipio(municipioService.buscar(1l).get());
 
         Mockito.when(bindingResultMock.hasErrors()).thenReturn(false);
 
